@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIDA — Partnership Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & tokens ─────────────────────────────────────────────────────── */
+:root{
+  --bg:#F4F6FB;
+  --surface:#FFFFFF;
+  --surface2:#F0F2F8;
+  --border:#E3E7F0;
+  --text-1:#0E1320;
+  --text-2:#56607A;
+  --text-3:#9AA3BA;
+  --blue:#1A56DB;  --blue-l:#EEF3FF;
+  --green:#0A7A4A; --green-l:#E8F8F1;
+  --amber:#96600A; --amber-l:#FEF3DC;
+  --red:#C0193A;   --red-l:#FFF0F3;
+  --purple:#5B21B6;--purple-l:#F0EDFF;
+  --teal:#0B7A72;  --teal-l:#E6FDFB;
+  --slate:#3D4B6B; --slate-l:#EEF0F6;
+  --r:10px; --r-sm:6px; --r-lg:14px;
+  --sh:0 1px 3px rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.04);
+  --sh-md:0 4px 16px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text-1);font-size:13px;line-height:1.55}
+
+/* ── Layout ─────────────────────────────────────────────────────────────── */
+.shell{display:flex;min-height:100vh}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+.sidebar{width:216px;background:var(--surface);border-right:1px solid var(--border);flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+.logo{padding:20px 18px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.logo-icon{width:34px;height:34px;background:var(--blue);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2}
+.logo-text .name{font-size:15px;font-weight:800;letter-spacing:-.3px;color:var(--text-1)}
+.logo-text .sub{font-size:10px;color:var(--text-3);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.nav{padding:10px 10px;flex:1}
+.nav-group{margin-bottom:4px}
+.nav-label{font-size:10px;font-weight:700;color:var(--text-3);letter-spacing:.08em;text-transform:uppercase;padding:8px 8px 4px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:var(--r-sm);color:var(--text-2);font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .12s,color .12s;margin-bottom:1px}
+.nav-item:hover{background:var(--surface2);color:var(--text-1)}
+.nav-item.active{background:var(--blue-l);color:var(--blue)}
+.nav-item svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+.sidebar-footer{padding:14px 14px;border-top:1px solid var(--border);font-size:11px;color:var(--text-3)}
+.sidebar-footer strong{color:var(--text-2);display:block;margin-bottom:2px}
+
+/* ── Main ────────────────────────────────────────────────────────────────── */
+.main{flex:1;min-width:0;padding:26px 28px 40px}
+
+/* ── Top bar ─────────────────────────────────────────────────────────────── */
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;gap:16px}
+.page-title{font-size:21px;font-weight:800;letter-spacing:-.4px;line-height:1.2}
+.page-meta{font-size:12px;color:var(--text-3);margin-top:3px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.meta-dot{width:4px;height:4px;border-radius:50%;background:var(--border);flex-shrink:0}
+.topbar-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:7px 13px;border-radius:var(--r-sm);font-size:12px;font-weight:700;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text-2);transition:all .12s;font-family:inherit;white-space:nowrap}
+.btn:hover{background:var(--surface2);color:var(--text-1)}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-primary:hover{background:#1448c0}
+.btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2}
+.btn:disabled{opacity:.45;cursor:default}
+
+/* ── Section title ───────────────────────────────────────────────────────── */
+.section-label{font-size:11px;font-weight:700;color:var(--text-3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px;margin-top:22px}
+.section-label:first-child{margin-top:0}
+
+/* ── KPI grid ────────────────────────────────────────────────────────────── */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:15px 16px;box-shadow:var(--sh)}
+.kpi-lbl{font-size:10.5px;font-weight:700;color:var(--text-3);letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px}
+.kpi-val{font-size:26px;font-weight:800;letter-spacing:-1px;line-height:1;color:var(--text-1)}
+.kpi-sub{font-size:11px;color:var(--text-3);margin-top:4px}
+.kpi-tag{display:inline-flex;align-items:center;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:700;margin-top:6px;letter-spacing:.02em}
+.tag-green{background:var(--green-l);color:var(--green)}
+.tag-amber{background:var(--amber-l);color:var(--amber)}
+.tag-blue{background:var(--blue-l);color:var(--blue)}
+.tag-gray{background:var(--slate-l);color:var(--slate)}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--sh);overflow:hidden}
+.card-head{padding:13px 16px 11px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.card-title{font-size:12.5px;font-weight:700;color:var(--text-1)}
+.card-sub{font-size:11px;color:var(--text-3);margin-top:1px}
+.card-body{padding:14px 16px}
+
+/* ── Grid layouts ─────────────────────────────────────────────────────────── */
+.row-3{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px;margin-bottom:14px}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mb-14{margin-bottom:14px}
+
+/* ── Funnel ──────────────────────────────────────────────────────────────── */
+.funnel-wrap{padding:8px 0 4px}
+.f-row{display:flex;align-items:center;gap:10px;padding:5px 14px;border-radius:var(--r-sm);transition:background .1s;cursor:default}
+.f-row:hover{background:var(--surface2)}
+.f-lbl{font-size:11.5px;font-weight:600;color:var(--text-2);width:148px;flex-shrink:0}
+.f-track{flex:1;height:26px;background:var(--surface2);border-radius:5px;overflow:hidden}
+.f-fill{height:100%;border-radius:5px;display:flex;align-items:center;padding-left:9px;font-size:10.5px;font-weight:700;color:#fff;white-space:nowrap;min-width:2px}
+.f-stat{width:64px;flex-shrink:0;text-align:right}
+.f-n{font-size:14px;font-weight:800;color:var(--text-1)}
+.f-p{font-size:10px;color:var(--text-3)}
+.f-arrow{text-align:center;padding:1px 14px;color:var(--border);font-size:9px;letter-spacing:.5em}
+.f-source{font-size:10px;color:var(--text-3);padding:6px 14px 2px}
+
+/* ── Donut ───────────────────────────────────────────────────────────────── */
+.donut-section{display:flex;flex-direction:column;align-items:center;padding:6px 0}
+.donut-legend{width:100%;margin-top:12px;display:flex;flex-direction:column;gap:7px}
+.leg-row{display:flex;align-items:center;gap:7px;font-size:11.5px}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.leg-val{font-weight:700;color:var(--text-1)}
+.leg-lbl{color:var(--text-3)}
+.donut-sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:10px}
+.sub-tile{background:var(--surface2);border-radius:var(--r-sm);padding:9px 11px}
+.sub-tile-lbl{font-size:9.5px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em}
+.sub-tile-val{font-size:17px;font-weight:800;margin-top:2px;color:var(--text-1)}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+.tabs{display:flex;border-bottom:1px solid var(--border);padding:0 16px;background:var(--surface)}
+.tab{padding:9px 13px;font-size:12px;font-weight:700;color:var(--text-3);cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:color .12s,border-color .12s;white-space:nowrap;user-select:none}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab:hover:not(.active){color:var(--text-1)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ── Search bar ──────────────────────────────────────────────────────────── */
+.search-wrap{position:relative;display:flex;align-items:center}
+.search-wrap svg{position:absolute;left:9px;width:13px;height:13px;stroke:var(--text-3);fill:none;stroke-width:2;pointer-events:none}
+.search-input{padding:6px 10px 6px 28px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-family:inherit;outline:none;width:168px;background:var(--surface);color:var(--text-1);transition:border-color .12s}
+.search-input:focus{border-color:var(--blue)}
+.search-input::placeholder{color:var(--text-3)}
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+.tbl-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{font-size:10px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;padding:7px 12px;background:var(--surface2);border-bottom:1px solid var(--border);text-align:left;white-space:nowrap;position:sticky;top:0;z-index:1}
+td{padding:8px 12px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:#F8F9FC}
+.t-name{font-weight:700;white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis;color:var(--text-1)}
+.t-name .t-owner{font-size:10px;font-weight:500;color:var(--text-3);margin-top:1px}
+.t-industry{font-size:11px;color:var(--text-2);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-usecase{font-size:11px;color:var(--text-2);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-num{text-align:right;font-weight:700;font-size:12px;color:var(--text-1);white-space:nowrap}
+.t-num-sub{font-size:10px;color:var(--text-3);font-weight:400}
+
+/* ── Badges ──────────────────────────────────────────────────────────────── */
+.badge{display:inline-flex;align-items:center;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap;letter-spacing:.02em}
+.b-blue  {background:var(--blue-l);  color:var(--blue)}
+.b-green {background:var(--green-l); color:var(--green)}
+.b-amber {background:var(--amber-l); color:var(--amber)}
+.b-gray  {background:var(--slate-l); color:var(--slate)}
+.b-purple{background:var(--purple-l);color:var(--purple)}
+.b-teal  {background:var(--teal-l);  color:var(--teal)}
+.b-red   {background:var(--red-l);   color:var(--red)}
+
+/* ── Progress bar ────────────────────────────────────────────────────────── */
+.prog{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.prog-track{width:56px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;flex-shrink:0}
+.prog-fill{height:100%;border-radius:2px;background:var(--blue)}
+.prog-pct{font-size:11px;color:var(--text-3)}
+
+/* ── ABP split pane ──────────────────────────────────────────────────────── */
+.abp-panes{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.abp-pane{padding:13px 16px}
+.abp-pane:first-child{border-right:1px solid var(--border)}
+.abp-pane-title{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:9px}
+
+/* ── Hbar ────────────────────────────────────────────────────────────────── */
+.hbar{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.hbar-lbl{font-size:11px;color:var(--text-2);min-width:112px;max-width:112px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+.hbar-track{flex:1;height:5px;background:var(--surface2);border-radius:3px;overflow:hidden}
+.hbar-fill{height:100%;border-radius:3px}
+.hbar-val{font-size:11px;font-weight:700;min-width:40px;text-align:right}
+
+/* ── Data source badge ───────────────────────────────────────────────────── */
+.ds-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.03em}
+.ds-live{background:var(--green-l);color:var(--green)}
+.ds-seed{background:var(--amber-l);color:var(--amber)}
+.ds-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.ds-live .ds-dot{background:var(--green)}
+.ds-seed .ds-dot{background:var(--amber)}
+
+/* ── Loading / error ─────────────────────────────────────────────────────── */
+.loading{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:40px;color:var(--text-3)}
+.spinner{width:28px;height:28px;border:2.5px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .65s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-bar{background:var(--red-l);color:var(--red);padding:9px 16px;font-size:12px;font-weight:600;border-bottom:1px solid #fecdd3;display:none}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.empty{text-align:center;padding:28px;color:var(--text-3);font-size:12px}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ── Sidebar ──────────────────────────────────────────────────────────── -->
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="logo-text">
+      <div class="name">VIDA</div>
+      <div class="sub">Partnership</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nav-group">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item active" href="#">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-label">Partners</div>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Partner list
+      </a>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        Acquisition funnel
+      </a>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+        Client universe
+      </a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-label">Strategy</div>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        ABP support
+      </a>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Pipeline
+      </a>
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <strong id="sb-updated">Syncing…</strong>
+    <span id="sb-source"></span>
+  </div>
+</aside>
+
+<!-- ── Main ─────────────────────────────────────────────────────────────── -->
+<main class="main">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div>
+      <div class="page-title">Partnership Dashboard</div>
+      <div class="page-meta">
+        <span>VIDA Partner Management</span>
+        <span class="meta-dot"></span>
+        <span id="meta-updated">Loading…</span>
+        <span class="meta-dot"></span>
+        <span id="meta-source-badge"></span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn" id="btn-refresh" onclick="forceRefresh()">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.08-6.7"/></svg>
+        Refresh
+      </button>
+      <button class="btn btn-primary" onclick="window.open('https://app-na2.hubspot.com/contacts/22044185/objects/0-2/views/52335833/list','_blank')">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        HubSpot
+      </button>
+    </div>
+  </div>
+
+  <!-- Error bar -->
+  <div id="error-bar" class="error-bar"></div>
+
+  <!-- ── KPI rows ────────────────────────────────────────────────────────── -->
+  <div class="section-label">Summary</div>
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-lbl">Total partners</div>
+      <div class="kpi-val" id="k-total">—</div>
+      <div class="kpi-sub">All registered in HubSpot</div>
+      <div class="kpi-tag tag-blue">Active program</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Existing (active)</div>
+      <div class="kpi-val" id="k-existing">—</div>
+      <div class="kpi-sub" id="k-existing-sub">Fully operational</div>
+      <div class="kpi-tag tag-green">Operational</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">New (onboarded)</div>
+      <div class="kpi-val" id="k-new">—</div>
+      <div class="kpi-sub" id="k-new-sub">Integration live</div>
+      <div class="kpi-tag tag-green">Live</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Pipeline</div>
+      <div class="kpi-val" id="k-pipeline">—</div>
+      <div class="kpi-sub" id="k-pipeline-sub">In progress</div>
+      <div class="kpi-tag tag-amber">Pending</div>
+    </div>
+  </div>
+  <div class="kpi-grid mb-14">
+    <div class="kpi">
+      <div class="kpi-lbl">Solution partners</div>
+      <div class="kpi-val" id="k-solution">—</div>
+      <div class="kpi-sub">Platform / Developer ISV</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Access partners</div>
+      <div class="kpi-val" id="k-access">—</div>
+      <div class="kpi-sub">SI / Reseller / Referral</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Support to ABP</div>
+      <div class="kpi-val" id="k-abp" style="color:var(--green)">—</div>
+      <div class="kpi-sub">Contributing to ABP target</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Non-ABP partners</div>
+      <div class="kpi-val" id="k-nonabp" style="color:var(--text-3)">—</div>
+      <div class="kpi-sub">Active, non-ABP segment</div>
+    </div>
+  </div>
+
+  <!-- ── Funnel + Donuts ─────────────────────────────────────────────────── -->
+  <div class="section-label">Partner acquisition funnel</div>
+  <div class="row-3 mb-14">
+
+    <!-- Funnel card -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">Acquisition funnel</div>
+          <div class="card-sub">HubSpot deal pipeline · all stages</div>
+        </div>
+        <span id="funnel-source-tag"></span>
+      </div>
+      <div id="funnel-wrap" class="funnel-wrap">
+        <div class="loading"><div class="spinner"></div>Loading funnel…</div>
+      </div>
+    </div>
+
+    <!-- Donut: partner type -->
+    <div class="card">
+      <div class="card-head"><div>
+        <div class="card-title">Partner type mix</div>
+        <div class="card-sub">Solution vs Access</div>
+      </div></div>
+      <div class="card-body">
+        <div class="donut-section">
+          <canvas id="donut1" width="148" height="148"></canvas>
+          <div id="donut1-legend" class="donut-legend"></div>
+          <div class="donut-sub-grid">
+            <div class="sub-tile"><div class="sub-tile-lbl">Priority</div><div class="sub-tile-val" id="tier-priority">—</div></div>
+            <div class="sub-tile"><div class="sub-tile-lbl">Regular</div><div class="sub-tile-val" id="tier-regular">—</div></div>
+            <div class="sub-tile"><div class="sub-tile-lbl">Platform ISV</div><div class="sub-tile-val" id="sub-platform">—</div></div>
+            <div class="sub-tile"><div class="sub-tile-lbl">Reseller</div><div class="sub-tile-val" id="sub-reseller">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donut: status -->
+    <div class="card">
+      <div class="card-head"><div>
+        <div class="card-title">Partner status</div>
+        <div class="card-sub">Existing · New · Pipeline</div>
+      </div></div>
+      <div class="card-body">
+        <div class="donut-section">
+          <canvas id="donut2" width="148" height="148"></canvas>
+          <div id="donut2-legend" class="donut-legend"></div>
+          <div class="donut-sub-grid">
+            <div class="sub-tile"><div class="sub-tile-lbl">SI partners</div><div class="sub-tile-val" id="sub-si">—</div></div>
+            <div class="sub-tile"><div class="sub-tile-lbl">Developer</div><div class="sub-tile-val" id="sub-dev">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Partner detail list ─────────────────────────────────────────────── -->
+  <div class="section-label">Partner detail list</div>
+  <div class="card mb-14">
+    <div class="card-head">
+      <div>
+        <div class="card-title">Existing &amp; New partners</div>
+        <div class="card-sub">Internal universe data as VIDA client · Google Sheets (live sync)</div>
+      </div>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="search-input" id="searchInput" type="text" placeholder="Search partner…" oninput="filterTable()">
+      </div>
+    </div>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('existing',this)">Existing (<span id="tc-existing">—</span>)</div>
+      <div class="tab" onclick="switchTab('new',this)">New (<span id="tc-new">—</span>)</div>
+    </div>
+
+    <!-- Existing -->
+    <div id="tab-existing" class="tab-panel active">
+      <div class="tbl-scroll">
+        <table id="tbl-existing">
+          <thead><tr>
+            <th style="width:21%">Partner</th>
+            <th style="width:10%">Type</th>
+            <th style="width:12%">Sub-type</th>
+            <th style="width:15%">Industry</th>
+            <th style="width:7%">Tier</th>
+            <th style="width:9%">Total clients</th>
+            <th style="width:11%">VIDA existing</th>
+            <th style="width:15%">ABP status</th>
+          </tr></thead>
+          <tbody><tr><td colspan="8"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- New -->
+    <div id="tab-new" class="tab-panel">
+      <div class="tbl-scroll">
+        <table id="tbl-new">
+          <thead><tr>
+            <th style="width:24%">Partner</th>
+            <th style="width:11%">Type</th>
+            <th style="width:13%">Sub-type</th>
+            <th style="width:16%">Industry</th>
+            <th style="width:8%">Tier</th>
+            <th style="width:12%">Target clients</th>
+            <th style="width:16%">ABP status</th>
+          </tr></thead>
+          <tbody><tr><td colspan="7"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ABP section ─────────────────────────────────────────────────────── -->
+  <div class="section-label">Partner support — ABP &amp; Non-ABP</div>
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title">Annual Business Plan partner contribution</div>
+        <div class="card-sub">Support to ABP vs Non-ABP · client universe &amp; attainment</div>
+      </div>
+    </div>
+
+    <!-- Mini bar charts -->
+    <div class="abp-panes">
+      <div class="abp-pane">
+        <div class="abp-pane-title" style="color:var(--green)">● Support to ABP</div>
+        <div id="abp-bars"></div>
+      </div>
+      <div class="abp-pane">
+        <div class="abp-pane-title" style="color:var(--text-3)">● Non-ABP — top by client universe</div>
+        <div id="nonabp-bars"></div>
+      </div>
+    </div>
+
+    <!-- Full ABP table -->
+    <div class="tbl-scroll">
+      <table id="tbl-abp">
+        <thead><tr>
+          <th style="width:19%">Partner</th>
+          <th style="width:9%">Status</th>
+          <th style="width:10%">ABP</th>
+          <th style="width:10%">Total clients</th>
+          <th style="width:9%">VIDA existing</th>
+          <th style="width:9%">Target</th>
+          <th style="width:10%">Attainment</th>
+          <th style="width:24%">Use-case</th>
+        </tr></thead>
+        <tbody><tr><td colspan="8"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<script>
+// ── Helpers ──────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+
+const fmt = v => (v == null) ? '<span style="color:var(--text-3)">—</span>' : Number(v).toLocaleString('id-ID');
+
+function badge(t, cls){ return `<span class="badge ${cls}">${t}</span>`; }
+
+function cleanName(s){
+  return (s||'')
+    .replace(/^\[(Platform|System Integrator|Reseller|Developer|Referral|Platform Partner)\]\s*/i,'')
+    .replace(/\s+as (a )?[Pp]artner\s*$/,'')
+    .replace(/\s*\(.*?\)\s*$/,'')
+    .trim() || s;
+}
+
+function typeB(t){
+  if(!t) return badge('—','b-gray');
+  return t==='Solution Partner' ? badge('Solution','b-purple') : badge('Access','b-blue');
+}
+function subB(s){
+  if(!s) return badge('—','b-gray');
+  if(s.includes('Platform'))   return badge('Platform','b-purple');
+  if(s.includes('Developer'))  return badge('Developer','b-amber');
+  if(s.includes('System'))     return badge('SI','b-blue');
+  if(s.includes('Reseller'))   return badge('Reseller','b-teal');
+  if(s.includes('Broker')||s.includes('Referral')) return badge('Referral','b-gray');
+  return badge(s.split(' ')[0],'b-gray');
+}
+function tierB(t){
+  if(!t) return badge('—','b-gray');
+  return t==='Priority' ? badge('Priority','b-amber') : badge('Regular','b-gray');
+}
+function abpB(a){
+  if(!a) return badge('—','b-gray');
+  return a.includes('Non') ? badge('Non-ABP','b-gray') : badge('ABP','b-green');
+}
+function statusB(s){
+  return s==='Existing' ? badge('Existing','b-green') : badge('New','b-blue');
+}
+function progBar(ex, total){
+  if(ex==null||!total) return '<span style="color:var(--text-3)">—</span>';
+  const pct = Math.min(100, Math.round(ex/total*100));
+  return `<div class="prog">
+    <div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div>
+    <span class="prog-pct">${pct}%</span>
+  </div>`;
+}
+
+// ── Donut canvas ──────────────────────────────────────────────────────────────
+function drawDonut(canvasId, items, legendId){
+  const canvas = $(canvasId); if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cx=74, cy=74, ro=68, ri=46;
+  const total = items.reduce((a,b)=>a+b.v,0)||1;
+  let angle = -Math.PI/2;
+  ctx.clearRect(0,0,148,148);
+
+  items.forEach(item=>{
+    const sweep = (item.v/total)*Math.PI*2;
+    ctx.beginPath(); ctx.moveTo(cx,cy);
+    ctx.arc(cx,cy,ro,angle,angle+sweep);
+    ctx.closePath();
+    ctx.fillStyle = item.c; ctx.fill();
+    angle += sweep;
+  });
+
+  ctx.beginPath(); ctx.arc(cx,cy,ri,0,Math.PI*2);
+  ctx.fillStyle = '#FFFFFF'; ctx.fill();
+
+  ctx.fillStyle='#0E1320';
+  ctx.font='800 20px Plus Jakarta Sans,sans-serif';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(total, cx, cy-5);
+  ctx.font='600 10px Plus Jakarta Sans,sans-serif';
+  ctx.fillStyle='#9AA3BA';
+  ctx.fillText('total', cx, cy+11);
+
+  if(legendId){
+    $(legendId).innerHTML = items.map(item=>`
+      <div class="leg-row">
+        <div class="leg-dot" style="background:${item.c}"></div>
+        <span class="leg-val">${item.v}</span>
+        <span class="leg-lbl">${item.l} (${Math.round(item.v/total*100)}%)</span>
+      </div>`).join('');
+  }
+}
+
+// ── Funnel renderer ───────────────────────────────────────────────────────────
+const FUNNEL_COLORS = ['#1A56DB','#2563EB','#0284C7','#0891B2','#0F766E','#065F46'];
+
+function renderFunnel(funnel, stats){
+  const wrap = $('funnel-wrap');
+  let rows = [];
+
+  if(funnel && funnel.stages && funnel.stages.length > 0){
+    const sc = funnel.stageCounts||{};
+    const total = Object.values(sc).reduce((a,b)=>a+b,0) || stats.total || 1;
+    rows = funnel.stages.map((s,i)=>({
+      label: s.label,
+      count: sc[s.id]||0,
+      pct: Math.round(((sc[s.id]||0)/total)*100),
+      color: FUNNEL_COLORS[Math.min(i, FUNNEL_COLORS.length-1)],
+    }));
+  }
+
+  // Always ensure the last 2 stages show existing/new counts from sheet
+  if(rows.length === 0 || funnel.source === 'sheet'){
+    const t = stats.total||1;
+    rows = [
+      {label:'Awareness / Identified',    count:stats.total,                                   pct:100,                                               color:FUNNEL_COLORS[0]},
+      {label:'Pipeline / Engaged',         count:stats.pipeline+stats.existing+stats.newPartners, pct:Math.round((stats.pipeline+stats.existing+stats.newPartners)/t*100), color:FUNNEL_COLORS[1]},
+      {label:'Proposed (MoU / Deal)',      count:stats.existing+stats.newPartners,              pct:Math.round((stats.existing+stats.newPartners)/t*100), color:FUNNEL_COLORS[2]},
+      {label:'Contracted',                 count:stats.existing+stats.newPartners,              pct:Math.round((stats.existing+stats.newPartners)/t*100), color:FUNNEL_COLORS[3]},
+      {label:'Onboarded / New',            count:stats.newPartners,                             pct:Math.round(stats.newPartners/t*100),                color:FUNNEL_COLORS[4]},
+      {label:'Existing / Active',          count:stats.existing,                                pct:Math.round(stats.existing/t*100),                  color:FUNNEL_COLORS[5]},
+    ];
+  }
+
+  wrap.innerHTML = rows.map((r,i)=>`
+    <div class="f-row">
+      <div class="f-lbl">${r.label}</div>
+      <div class="f-track">
+        <div class="f-fill" style="width:${Math.max(r.pct,2)}%;background:${r.color}">
+          ${r.count > 0 ? r.label : ''}
+        </div>
+      </div>
+      <div class="f-stat">
+        <div class="f-n">${r.count}</div>
+        <div class="f-p">${r.pct}%</div>
+      </div>
+    </div>
+    ${i < rows.length-1 ? '<div class="f-arrow">▼ ▼ ▼</div>' : ''}
+  `).join('') + `<div class="f-source">Source: ${funnel&&funnel.source==='hubspot'?'HubSpot deal pipeline (live)':'Partner_list.xlsx via Google Sheets'}</div>`;
+}
+
+// ── Table renderers ───────────────────────────────────────────────────────────
+function renderExisting(data){
+  const tbody = document.querySelector('#tbl-existing tbody');
+  if(!data.length){ tbody.innerHTML=`<tr><td colspan="8"><div class="empty">No existing partners found</div></td></tr>`; return; }
+  tbody.innerHTML = data.map(p=>`<tr>
+    <td>
+      <div class="t-name" title="${p.name}">${cleanName(p.name)}</div>
+      ${p.owner ? `<div class="t-owner">${p.owner}</div>` : ''}
+    </td>
+    <td>${typeB(p.type)}</td>
+    <td>${subB(p.subType)}</td>
+    <td class="t-industry" title="${p.industry}">${p.industry||'—'}</td>
+    <td>${tierB(p.tier)}</td>
+    <td class="t-num">${fmt(p.totalClient)}</td>
+    <td>${progBar(p.existingClient, p.totalClient)}</td>
+    <td>${abpB(p.abpStatus)}</td>
+  </tr>`).join('');
+}
+
+function renderNew(data){
+  const tbody = document.querySelector('#tbl-new tbody');
+  if(!data.length){ tbody.innerHTML=`<tr><td colspan="7"><div class="empty">No new partners found</div></td></tr>`; return; }
+  tbody.innerHTML = data.map(p=>`<tr>
+    <td>
+      <div class="t-name" title="${p.name}">${cleanName(p.name)}</div>
+      ${p.owner ? `<div class="t-owner">${p.owner}</div>` : ''}
+    </td>
+    <td>${typeB(p.type)}</td>
+    <td>${subB(p.subType)}</td>
+    <td class="t-industry" title="${p.industry}">${p.industry||'—'}</td>
+    <td>${tierB(p.tier)}</td>
+    <td class="t-num">${fmt(p.targetClient||p.totalClient)}</td>
+    <td>${abpB(p.abpStatus)}</td>
+  </tr>`).join('');
+}
+
+function renderABP(data){
+  // Mini bar charts
+  const abpList  = data.filter(p=>p.abpStatus==='Support to ABP');
+  const nonList  = data.filter(p=>p.abpStatus==='Non Support to ABP')
+                       .sort((a,b)=>(b.totalClient||0)-(a.totalClient||0))
+                       .slice(0,8);
+
+  const maxEx = Math.max(1,...abpList.map(p=>p.existingClient||0));
+  const maxT  = Math.max(1,...nonList.map(p=>p.totalClient||0));
+
+  $('abp-bars').innerHTML = abpList.length
+    ? abpList.map(p=>{
+        const pct=Math.round((p.existingClient||0)/maxEx*100);
+        return `<div class="hbar">
+          <div class="hbar-lbl" title="${cleanName(p.name)}">${cleanName(p.name)}</div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:${pct}%;background:var(--green)"></div></div>
+          <div class="hbar-val" style="color:var(--green)">${(p.existingClient||0).toLocaleString('id-ID')}</div>
+        </div>`;
+      }).join('')
+    : '<div style="color:var(--text-3);font-size:12px">No ABP partners</div>';
+
+  $('nonabp-bars').innerHTML = nonList.map(p=>{
+    const pct=Math.round((p.totalClient||0)/maxT*100);
+    return `<div class="hbar">
+      <div class="hbar-lbl" title="${cleanName(p.name)}">${cleanName(p.name)}</div>
+      <div class="hbar-track"><div class="hbar-fill" style="width:${pct}%;background:var(--text-3)"></div></div>
+      <div class="hbar-val" style="color:var(--text-2)">${(p.totalClient||0).toLocaleString('id-ID')}</div>
+    </div>`;
+  }).join('');
+
+  // Full table
+  const tbody = document.querySelector('#tbl-abp tbody');
+  if(!data.length){ tbody.innerHTML=`<tr><td colspan="8"><div class="empty">No ABP data</div></td></tr>`; return; }
+  tbody.innerHTML = data.map(p=>{
+    const isABP = !p.abpStatus.includes('Non');
+    const att = p.existingClient&&p.totalClient
+      ? Math.min(100,Math.round(p.existingClient/p.totalClient*100)) : null;
+    const attHtml = att!=null
+      ? `<div class="prog"><div class="prog-track"><div class="prog-fill" style="width:${att}%;background:${isABP?'var(--green)':'var(--text-3)'}"></div></div><span class="prog-pct">${att}%</span></div>`
+      : '<span style="color:var(--text-3)">—</span>';
+    return `<tr>
+      <td>
+        <div class="t-name" title="${p.name}">${cleanName(p.name)}</div>
+        ${p.owner ? `<div class="t-owner">${p.owner}</div>` : ''}
+      </td>
+      <td>${statusB(p.status)}</td>
+      <td>${isABP ? badge('ABP','b-green') : badge('Non-ABP','b-gray')}</td>
+      <td class="t-num">${fmt(p.totalClient)}</td>
+      <td class="t-num">${fmt(p.existingClient)}</td>
+      <td class="t-num">${fmt(p.targetClient)}</td>
+      <td>${attHtml}</td>
+      <td class="t-usecase" title="${p.useCase}">${p.useCase||'—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+function switchTab(name, el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  $('tab-'+name).classList.add('active');
+  filterTable();
+}
+
+function filterTable(){
+  const q = ($('searchInput').value||'').toLowerCase();
+  document.querySelectorAll('.tab-panel.active tbody tr').forEach(row=>{
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+// ── Render full dashboard ─────────────────────────────────────────────────────
+function renderDashboard(d){
+  const s = d.stats;
+
+  // KPIs
+  $('k-total').textContent    = s.total;
+  $('k-existing').textContent = s.existing;
+  $('k-new').textContent      = s.newPartners;
+  $('k-pipeline').textContent = s.pipeline;
+  $('k-solution').textContent = s.solutionCount;
+  $('k-access').textContent   = s.accessCount;
+  $('k-abp').textContent      = s.abpCount;
+  $('k-nonabp').textContent   = s.nonAbpCount;
+  $('tier-priority').textContent  = s.priorityCount;
+  $('tier-regular').textContent   = s.regularCount;
+  $('sub-platform').textContent   = s.platformCount;
+  $('sub-reseller').textContent   = s.resellerCount;
+  $('sub-si').textContent         = s.siCount;
+  $('sub-dev').textContent        = s.developerCount;
+
+  const t = s.total||1;
+  $('k-existing-sub').textContent = `${Math.round(s.existing/t*100)}% of total`;
+  $('k-new-sub').textContent      = `${Math.round(s.newPartners/t*100)}% of total`;
+  $('k-pipeline-sub').textContent = `${Math.round(s.pipeline/t*100)}% of total`;
+
+  // Metadata
+  const updated = new Date(d.lastUpdated);
+  const updStr  = updated.toLocaleString('en-ID',{dateStyle:'medium',timeStyle:'short'});
+  $('meta-updated').textContent   = updStr;
+  $('sb-updated').textContent     = updStr;
+
+  const isLive = d.dataSource === 'google_sheets';
+  $('sb-source').textContent = isLive ? 'Google Sheets (live)' : 'Seed data (JSON)';
+  $('meta-source-badge').innerHTML = isLive
+    ? '<span class="ds-badge ds-live"><span class="ds-dot"></span>Live — Google Sheets</span>'
+    : '<span class="ds-badge ds-seed"><span class="ds-dot"></span>Seed data (configure Sheets)</span>';
+
+  // Funnel
+  renderFunnel(d.funnel, s);
+
+  // Donuts
+  drawDonut('donut1',[
+    {v:s.accessCount,   c:'#1A56DB', l:'Access Partner'},
+    {v:s.solutionCount, c:'#7C3AED', l:'Solution Partner'},
+  ],'donut1-legend');
+  drawDonut('donut2',[
+    {v:s.existing,     c:'#0A7A4A', l:'Existing'},
+    {v:s.newPartners,  c:'#2563EB', l:'New'},
+    {v:s.pipeline,     c:'#D97706', l:'Pipeline'},
+  ],'donut2-legend');
+
+  // Tab counts
+  $('tc-existing').textContent = s.existing;
+  $('tc-new').textContent      = s.newPartners;
+
+  // Tables
+  renderExisting(d.existing || []);
+  renderNew(d.newPartners || []);
+  renderABP(d.abpList || []);
+}
+
+// ── Fetch from API ────────────────────────────────────────────────────────────
+async function loadDashboard(force=false){
+  const btn = $('btn-refresh');
+  btn.disabled = true;
+  $('error-bar').style.display = 'none';
+
+  try {
+    const url = force ? '/api/dashboard?t='+Date.now() : '/api/dashboard';
+    const res = await fetch(url);
+    if(!res.ok) throw new Error(`Server returned ${res.status}`);
+    const data = await res.json();
+    renderDashboard(data);
+  } catch(err){
+    console.error('Dashboard load error:', err);
+    const bar = $('error-bar');
+    bar.style.display = 'block';
+    bar.textContent   = `⚠ Could not load data: ${err.message}`;
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+async function forceRefresh(){
+  await fetch('/api/refresh', {method:'POST'}).catch(()=>{});
+  await loadDashboard(true);
+}
+
+// Initial load + auto-refresh every 5 min
+loadDashboard();
+setInterval(() => loadDashboard(), 5 * 60 * 1000);
+</script>
+</body>
+</html>
