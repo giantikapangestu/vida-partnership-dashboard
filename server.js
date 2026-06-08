@@ -306,7 +306,7 @@ app.get("*", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(process.env.PORT || 3000, "0.0.0.0", () => {
   console.log(`VIDA Dashboard running on http://0.0.0.0:${PORT}`);
   console.log(`  HubSpot:      ${process.env.HUBSPOT_TOKEN ? "✓ configured" : "✗ not set (funnel uses sheet data)"}`);
   console.log(`  Google Sheets:${process.env.GOOGLE_SHEET_ID ? " ✓ configured" : " ✗ not set (using seed JSON)"}`);
