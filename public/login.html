@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIDA Partnership — Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Plus Jakarta Sans',sans-serif;background:linear-gradient(135deg,#0F1117 0%,#1A2340 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+  .card{background:#ffffff;border-radius:16px;padding:40px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+  .logo{display:flex;align-items:center;gap:12px;margin-bottom:32px;justify-content:center}
+  .logo-icon{width:44px;height:44px;background:#1A56DB;border-radius:11px;display:flex;align-items:center;justify-content:center}
+  .logo-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2.2}
+  .logo-text .name{font-size:20px;font-weight:800;letter-spacing:-.4px;color:#0F1117}
+  .logo-text .sub{font-size:11px;color:#9AA0B4;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  h1{font-size:22px;font-weight:800;color:#0F1117;letter-spacing:-.4px;margin-bottom:6px;text-align:center}
+  .subtitle{font-size:13px;color:#9AA0B4;text-align:center;margin-bottom:28px}
+  .form-group{margin-bottom:16px}
+  label{display:block;font-size:12px;font-weight:700;color:#56607A;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+  input{width:100%;padding:11px 14px;border:1.5px solid #E3E7F0;border-radius:8px;font-size:14px;font-family:inherit;color:#0F1117;outline:none;transition:border-color .15s,box-shadow .15s;background:#F8F9FC}
+  input:focus{border-color:#1A56DB;box-shadow:0 0 0 3px rgba(26,86,219,0.1);background:#fff}
+  input::placeholder{color:#B0B8CC}
+  .btn-login{width:100%;padding:13px;background:#1A56DB;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;margin-top:8px;transition:background .15s,transform .1s;letter-spacing:.02em}
+  .btn-login:hover{background:#1448c0}
+  .btn-login:active{transform:scale(.99)}
+  .btn-login:disabled{opacity:.6;cursor:default}
+  .error{background:#FFF0F3;color:#C0193A;border:1px solid #fecdd3;border-radius:8px;padding:10px 14px;font-size:13px;font-weight:600;margin-top:14px;display:none;text-align:center}
+  .footer{margin-top:24px;text-align:center;font-size:11px;color:#B0B8CC}
+  .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="logo-text">
+      <div class="name">VIDA</div>
+      <div class="sub">Partnership</div>
+    </div>
+  </div>
+
+  <h1>Welcome back</h1>
+  <p class="subtitle">Sign in to access the Partnership Dashboard</p>
+
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" id="username" placeholder="Enter your username" autocomplete="username">
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+  </div>
+
+  <button class="btn-login" id="btn-login" onclick="doLogin()">Sign in</button>
+  <div class="error" id="error-msg"></div>
+
+  <div class="footer">VIDA Partner Management · Confidential</div>
+</div>
+
+<script>
+// Check if already logged in
+const token = localStorage.getItem('vida_token');
+if(token){
+  fetch('/api/me', {headers:{'Authorization':'Bearer '+token}})
+    .then(r => r.ok ? window.location.href='/' : null)
+    .catch(()=>{});
+}
+
+async function doLogin(){
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  const btn = document.getElementById('btn-login');
+  const errEl = document.getElementById('error-msg');
+
+  if(!username || !password){
+    showError('Please enter username and password');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Signing in…';
+  errEl.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({username, password})
+    });
+    const data = await res.json();
+
+    if(res.ok && data.token){
+      localStorage.setItem('vida_token', data.token);
+      localStorage.setItem('vida_user', JSON.stringify(data.user));
+      window.location.href = '/';
+    } else {
+      showError(data.error || 'Login failed');
+    }
+  } catch(err){
+    showError('Connection error. Please try again.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Sign in';
+  }
+}
+
+function showError(msg){
+  const el = document.getElementById('error-msg');
+  el.textContent = '⚠ ' + msg;
+  el.style.display = 'block';
+}
+
+// Allow Enter key
+document.addEventListener('keydown', e => {
+  if(e.key === 'Enter') doLogin();
+});
+</script>
+</body>
+</html>
