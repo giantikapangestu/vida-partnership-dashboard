@@ -192,6 +192,21 @@ tbody tr:hover td{background:#F8F9FC}
 
 /* ── Empty state ─────────────────────────────────────────────────────────── */
 .empty{text-align:center;padding:28px;color:var(--text-3);font-size:12px}
+.filter-bar{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface2);flex-wrap:wrap}
+.filter-label{font-size:11px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em}
+.filter-group{position:relative;display:inline-block}
+.filter-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-weight:600;cursor:pointer;background:var(--surface);color:var(--text-2);font-family:inherit}
+.filter-btn.active{background:var(--blue-l);border-color:var(--blue);color:var(--blue)}
+.filter-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .15s}
+.filter-btn.open svg{transform:rotate(180deg)}
+.filter-dropdown{position:absolute;top:calc(100% + 4px);left:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:100;min-width:180px;padding:6px 0;display:none}
+.filter-dropdown.open{display:block}
+.filter-option{display:flex;align-items:center;gap:8px;padding:7px 12px;cursor:pointer;font-size:12px;color:var(--text-1)}
+.filter-option:hover{background:var(--surface2)}
+.filter-option input{width:13px;height:13px;accent-color:var(--blue);cursor:pointer}
+.f-count{background:var(--blue);color:#fff;border-radius:20px;padding:1px 5px;font-size:10px;font-weight:700}
+.filter-clear-btn{font-size:11px;color:var(--blue);cursor:pointer;padding:4px 10px;font-weight:600;background:none;border:none;font-family:inherit}
+.filter-result{font-size:11px;color:var(--text-3);margin-left:auto}
 </style>
 </head>
 <body>
@@ -405,6 +420,41 @@ tbody tr:hover td{background:#F8F9FC}
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input class="search-input" id="searchInput" type="text" placeholder="Search partner…" oninput="filterTable()">
       </div>
+    </div>
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <div class="filter-group" id="fg-type">
+        <button class="filter-btn" onclick="toggleDropdown('dd-type',this)">Type <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="filter-dropdown" id="dd-type">
+          <label class="filter-option"><input type="checkbox" value="Solution Partner" onchange="filterTable()"> Solution Partner</label>
+          <label class="filter-option"><input type="checkbox" value="Access Partner" onchange="filterTable()"> Access Partner</label>
+        </div>
+      </div>
+      <div class="filter-group" id="fg-subtype">
+        <button class="filter-btn" onclick="toggleDropdown('dd-subtype',this)">Sub-type <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="filter-dropdown" id="dd-subtype">
+          <label class="filter-option"><input type="checkbox" value="Platform" onchange="filterTable()"> Platform ISV</label>
+          <label class="filter-option"><input type="checkbox" value="SI" onchange="filterTable()"> System Integrator</label>
+          <label class="filter-option"><input type="checkbox" value="Reseller" onchange="filterTable()"> Reseller</label>
+          <label class="filter-option"><input type="checkbox" value="Developer" onchange="filterTable()"> Developer</label>
+        </div>
+      </div>
+      <div class="filter-group" id="fg-tier">
+        <button class="filter-btn" onclick="toggleDropdown('dd-tier',this)">Tier <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="filter-dropdown" id="dd-tier">
+          <label class="filter-option"><input type="checkbox" value="Priority" onchange="filterTable()"> Priority</label>
+          <label class="filter-option"><input type="checkbox" value="Regular" onchange="filterTable()"> Regular</label>
+        </div>
+      </div>
+      <div class="filter-group" id="fg-abp">
+        <button class="filter-btn" onclick="toggleDropdown('dd-abp',this)">ABP <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="filter-dropdown" id="dd-abp">
+          <label class="filter-option"><input type="checkbox" value="ABP" onchange="filterTable()"> Support to ABP</label>
+          <label class="filter-option"><input type="checkbox" value="Non-ABP" onchange="filterTable()"> Non Support to ABP</label>
+        </div>
+      </div>
+      <button class="filter-clear-btn" onclick="resetFilters()">✕ Reset</button>
+      <span class="filter-result" id="filter-result"></span>
     </div>
     <div class="tabs">
       <div class="tab active" onclick="switchTab('existing',this)">Existing (<span id="tc-existing">—</span>)</div>
@@ -730,11 +780,53 @@ function switchTab(name, el){
   filterTable();
 }
 
+function toggleDropdown(id,btn){
+  const dd=document.getElementById(id);
+  const open=dd.classList.contains('open');
+  document.querySelectorAll('.filter-dropdown').forEach(d=>d.classList.remove('open'));
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('open'));
+  if(!open){dd.classList.add('open');btn.classList.add('open');}
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.filter-group')){
+    document.querySelectorAll('.filter-dropdown').forEach(d=>d.classList.remove('open'));
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('open'));
+  }
+});
+function getChecked(id){return[...document.querySelectorAll('#'+id+' input:checked')].map(c=>c.value);}
+function updBtn(fgId,ddId,label){
+  const ch=getChecked(ddId);const btn=document.querySelector('#'+fgId+' .filter-btn');if(!btn)return;
+  if(ch.length){btn.classList.add('active');let b=btn.querySelector('.f-count');if(!b){b=document.createElement('span');b.className='f-count';btn.insertBefore(b,btn.querySelector('svg'));}b.textContent=ch.length;}
+  else{btn.classList.remove('active');const b=btn.querySelector('.f-count');if(b)b.remove();}
+}
 function filterTable(){
-  const q = ($('searchInput').value||'').toLowerCase();
+  const q=($('searchInput').value||'').toLowerCase();
+  const types=getChecked('dd-type'),subs=getChecked('dd-subtype'),tiers=getChecked('dd-tier'),abps=getChecked('dd-abp');
+  updBtn('fg-type','dd-type');updBtn('fg-subtype','dd-subtype');updBtn('fg-tier','dd-tier');updBtn('fg-abp','dd-abp');
+  let vis=0;
   document.querySelectorAll('.tab-panel.active tbody tr').forEach(row=>{
-    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+    const cells=row.querySelectorAll('td');if(cells.length<2){row.style.display='';return;}
+    const txt=row.textContent.toLowerCase();
+    const t=cells[1]?.textContent?.trim()||'';
+    const st=cells[2]?.textContent?.trim()||'';
+    const ti=cells[4]?.textContent?.trim()||'';
+    const mQ=!q||txt.includes(q);
+    const mT=!types.length||types.some(v=>t.includes(v.includes('Solution')?'Solution':'Access'));
+    const mS=!subs.length||subs.some(v=>st.includes(v));
+    const mTi=!tiers.length||tiers.some(v=>ti.includes(v));
+    const mA=!abps.length||abps.some(v=>txt.includes(v));
+    const show=mQ&&mT&&mS&&mTi&&mA;
+    row.style.display=show?'':'none';if(show)vis++;
   });
+  const tot=document.querySelectorAll('.tab-panel.active tbody tr').length;
+  const re=$('filter-result');
+  if(re){const hf=q||types.length||subs.length||tiers.length||abps.length;re.textContent=hf?vis+' of '+tot+' shown':'';}
+}
+function resetFilters(){
+  document.querySelectorAll('.filter-bar input').forEach(cb=>{cb.checked=false;});
+  $('searchInput').value='';
+  document.querySelectorAll('.filter-btn').forEach(btn=>{btn.classList.remove('active');const b=btn.querySelector('.f-count');if(b)b.remove();});
+  filterTable();
 }
 
 // ── Render full dashboard ─────────────────────────────────────────────────────
