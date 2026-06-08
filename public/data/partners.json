@@ -1,5 +1,6 @@
 [
   {
+    "parentId": "",
     "name": "Astra Integrasi DIgital",
     "type": "",
     "subType": "",
@@ -7,7 +8,6 @@
     "useCase": "",
     "owner": "",
     "industry": "Multifinance",
-    "childCompanies": "Indomobil Finance Indonesia, FIF, Adira",
     "status": "New",
     "totalClient": null,
     "existingClient": null,
@@ -15,6 +15,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "",
     "name": "Megvii",
     "type": "",
     "subType": "",
@@ -22,7 +23,6 @@
     "useCase": "",
     "owner": "",
     "industry": "Financial Services",
-    "childCompanies": "Adapundi, Easycash, Gandengtangan",
     "status": "New",
     "totalClient": null,
     "existingClient": null,
@@ -30,6 +30,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "",
     "name": "Pactindo",
     "type": "",
     "subType": "",
@@ -37,7 +38,6 @@
     "useCase": "",
     "owner": "",
     "industry": "Banking",
-    "childCompanies": "Bank Saqu, Bank Papua",
     "status": "Existing",
     "totalClient": null,
     "existingClient": null,
@@ -45,6 +45,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "",
     "name": "Pactindo",
     "type": "",
     "subType": "",
@@ -52,7 +53,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "Mandiri taspen",
     "status": "",
     "totalClient": null,
     "existingClient": null,
@@ -60,6 +60,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "",
     "name": "Pactindo",
     "type": "",
     "subType": "",
@@ -67,7 +68,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "BTPN Syariah",
     "status": "",
     "totalClient": null,
     "existingClient": null,
@@ -75,6 +75,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "10136946258",
     "name": "[Platform] ACM (Agara Cipta Mandiri) as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -82,7 +83,6 @@
     "useCase": "signing for BPJS Documents",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Healthcare (Hospital)",
-    "childCompanies": "SMK Global Mandiri, RS Citra Insani, RS Selasih Medika Bekasi, RS Sari Asih Ciledug, RSIA Bunda Fathia Purwakarta, RS Oetomo Bandung, RSU Bhakti Husada Banyuwangi, Youth Inspiration Summit, Sertisign, Klinik Asri Kemala Dewi, RSU Asri Purwakarta, RSU Kaliwates Jember, RS AMC Bandung, RSU Muhammadiyah Siti Aminah Bumiayu, Rumah Sakit Islam Zam-Zam Muhammadiyah Jatibarang, Klinik Sehat Rabinza, Klinik Utama Al Fatih Jeneponto, Klinik AVIO Prima Indonesia, Rumah Sakit Qona’ah, Klinik dr. Benggol Malang, Klinik Utama Rawat Inap Asyifa Husada, RS Umum Permata Madina Sibuhuan, PT Kawasan Industri Nusantara, PT Asset Ran Investama, Klinik Mitra Medica Mandiri, RSIA Prima Qonita Palembang, Klinik Utama Siti Khadijah Parepare, Klinik Utama Doi 79 Bantayan, Klinik Utama Darkthni, RS Sari Asih Cipondoh, RSUD dr Abdul Radjak Purwakarta, RS dr Abdul Radjak Cileungsi, Klinik Cava Medika, Klinik Mata EDC Warujayeng, Klinik Mata EDC Tulungagung, Klinik Mata EDC Trenggalek, Klinik Mata Royal EDC Mojosari, Klinik Mata EDC Mojoagung, Klinik Mata EDC Bangkalan, Klinik Abung Koto Medical, RS Insan Permata Tangerang, IHC RS Pertamina Cirebon, RS Mitra Medika Bondowoso, Klinik Fauziah Makassar, RSIA Mama Palembang, Klinik Sarina, Rumah Sakit Anggrek, RS Bunda Palembang, Klinik H. Syarkowi, RS Surya Insani Riau, RS Khalisah Palimanan Cirebon, RS Dadi Keluarga Ciamis, Prima Karya Guna Husada, Multi Instrumentasi Mandiri, Klinik Sehat Anugerah, RSIA Permata Ibunda Pandeglang, RS Trimitra Cibinong, RS Bunda Medika Jakabaring, RS Sriwijaya Palembang, RS HJ Fatimah Sunian Muhammadiyah Demak, RS Annisah Tangerang, ACM (Agara Cipta Mandiri), Cma Cgm.",
     "status": "Existing",
     "totalClient": 234,
     "existingClient": 63,
@@ -90,6 +90,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "39711260841",
     "name": "[System Integrator] Zegen as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -97,7 +98,6 @@
     "useCase": "ekyc, signing for document management system",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Banking; SME; Financial Services",
-    "childCompanies": "Bank BTN, Bank Mestika",
     "status": "Existing",
     "totalClient": 20,
     "existingClient": 2,
@@ -105,6 +105,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "19124223059",
     "name": "[Platform] Materai.id as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -112,7 +113,6 @@
     "useCase": "Digital sign on Emeterai Platform",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services; Government",
-    "childCompanies": "Materai.id as client",
     "status": "Existing",
     "totalClient": 300,
     "existingClient": 1,
@@ -120,6 +120,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9936161960",
     "name": "[Developer] (Adins) Advance Innovations as Partner",
     "type": "Solution Partner",
     "subType": "Developer Partner",
@@ -127,7 +128,6 @@
     "useCase": "ekyc, signing , emeterai for document for contract Loan Process",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Multifinance",
-    "childCompanies": "Esignhub, Adins (Advance Innovations) as Client, Hyundai Capital, PT Wahana Ottomitra Multiartha (WOM Finance), PT Wahana Ottomitra Multiartha (WOM Finance), Kredit Plus Teknologi (Pinjam Gampang), PT Wahana Ottomitra Multiartha (WOM Finance), Toyota Astra Finance, Mandiri Tunas Finance, Adins (Advance Innovations) as Client, Csulfinance, BAF Indonesia, BAF Indonesia, Adins (Advance Innovations) as Client, PT Wahana Ottomitra Multiartha (WOM Finance), Djembatan Dua, Adins (Advance Innovations) as Client, Adins (Advance Innovations) as Client, Hyundai Capital, Anugrah Argon Medica, Delamibrands, PT Surya Artha Nusantara Finance, Csulfinance, GoApotik, RS Permata, Mandiri Tunas Finance, Dexa Medica, Edot, Sarana Investama, Aizen, BAF Indonesia, Radana Bhaskara Finance, Toyota Astra Finance, PT Wahana Ottomitra Multiartha (WOM Finance), Kredit Plus Teknologi (Pinjam Gampang)",
     "status": "Existing",
     "totalClient": 38,
     "existingClient": 35,
@@ -135,6 +135,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "205380257487",
     "name": "[Reseller] Sekawan Media as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -142,7 +143,6 @@
     "useCase": "ekyc, signing and emeterai",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services; Government",
-    "childCompanies": "Sekawan Media as Client, Transportasi Gas Indonesia",
     "status": "Existing",
     "totalClient": 20,
     "existingClient": 2,
@@ -150,6 +150,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "39614775632",
     "name": "[Reseller] ACM (Agara Cipta Mandiri) as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -157,7 +158,6 @@
     "useCase": "ekyc, signing and emeterai",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Logistics; Education",
-    "childCompanies": "Delamibrands, CV Webtocrat, Nuansa Usaha Mandiri, GoApotik, Isig Lab, RSU Siaga Medika Banyumas, Nashrul Ummah, Oplaw, Infokes Indonesia, Isigs Lab",
     "status": "Existing",
     "totalClient": 10,
     "existingClient": 10,
@@ -165,6 +165,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "30644464916",
     "name": "[System Integrator] Maksi Integrasi Teknologi as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -172,7 +173,6 @@
     "useCase": "Signing and emeterai",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services",
-    "childCompanies": "Maksi Integrasi Teknologi as Client",
     "status": "Existing",
     "totalClient": 1,
     "existingClient": 1,
@@ -180,6 +180,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "29436015249",
     "name": "[Reseller] Kotakode (Klabs) as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -187,7 +188,6 @@
     "useCase": "ekyc, signing for document",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services",
-    "childCompanies": "",
     "status": "Existing",
     "totalClient": 10,
     "existingClient": null,
@@ -195,6 +195,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "25682013247",
     "name": "[Reseller] Titan Guard as partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -202,7 +203,6 @@
     "useCase": "emeterai",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME",
-    "childCompanies": "Asuransi Candi Utama",
     "status": "Existing",
     "totalClient": 20,
     "existingClient": 1,
@@ -210,6 +210,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "22055435576",
     "name": "[System Integrator] Nominie as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -217,7 +218,6 @@
     "useCase": "ekyc, ocr",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services",
-    "childCompanies": "Plaza Indonesia",
     "status": "Existing",
     "totalClient": 1,
     "existingClient": 1,
@@ -225,6 +225,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "18973730834",
     "name": "[Reseller] Allana as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -232,7 +233,6 @@
     "useCase": "ekyc, liveness, signing for client app",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services; Government",
-    "childCompanies": "Bank BRI",
     "status": "Existing",
     "totalClient": 1,
     "existingClient": 1,
@@ -240,6 +240,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "17663018242",
     "name": "[Reseller] Flash as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -247,7 +248,6 @@
     "useCase": "ekyc, liveness, signing for client app",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Financial Services",
-    "childCompanies": "MNC Sekuritas, Flash Mobile as Client, Semestaindovest, Modal Anak Bangsa / MAB, MPulsa, MNC Sekuritas, Motionpay",
     "status": "Existing",
     "totalClient": 20,
     "existingClient": 7,
@@ -255,6 +255,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "15827816865",
     "name": "[Platform] Midtrans as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -262,7 +263,6 @@
     "useCase": "emeterai for midtrans platform",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services",
-    "childCompanies": "Midtrans Merchants",
     "status": "Existing",
     "totalClient": 500000,
     "existingClient": 1,
@@ -270,6 +270,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "16099579548",
     "name": "[System Integrator] SQE as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -277,7 +278,6 @@
     "useCase": "ekyc, liveness, signing for client app",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Financial Services",
-    "childCompanies": "SQE as a Client, Sinarmas Multifinance, Sinarmas Multifinance, Sinarmas Multifinance, Sinarmas Multifinance, Sinarmas Sekuritas, Sinarmas Sekuritas, Sinarmas Multifinance, Asuransi Simas Jiwa, Sinarmas Multifinance",
     "status": "Existing",
     "totalClient": 60,
     "existingClient": 10,
@@ -285,6 +285,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "9925064341",
     "name": "[Reseller] Metranet as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -292,7 +293,6 @@
     "useCase": "ekyc, signing",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services; Government",
-    "childCompanies": "RS Ummuhani Jawa Tengah, PT Petrokimia Gresik, UNU Yogyakarta, Universitas Pancasila, Bank Hijra, RS PKU Muh Sruweng, RS Ananda Bekasi, PT Pegadaian, PT Pegadaian, RS PKU Muh Sruweng, PT Pegadaian, PT Pegadaian, Bank Hijra",
     "status": "Existing",
     "totalClient": 73,
     "existingClient": 13,
@@ -300,6 +300,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "19640572813",
     "name": "[System Integrator] Infomedia as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -307,7 +308,6 @@
     "useCase": "ekyc, signing",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Telco; Government; Public Sector",
-    "childCompanies": "LKPP - Infomedia",
     "status": "Existing",
     "totalClient": 50,
     "existingClient": 1,
@@ -315,6 +315,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9334994475",
     "name": "[System Integrator] Artajasa as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -322,7 +323,6 @@
     "useCase": "ekyc, liveness, signing for client app",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Banking; Financial Services",
-    "childCompanies": "BPR Universal",
     "status": "Existing",
     "totalClient": 1,
     "existingClient": 1,
@@ -330,6 +330,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9832721552",
     "name": "[Reseller] Intikom Berlian Mustika as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -337,7 +338,6 @@
     "useCase": "ekyc, signing for client app",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Banking; SME; Financial Services",
-    "childCompanies": "Bank Jatim",
     "status": "Existing",
     "totalClient": 60,
     "existingClient": 1,
@@ -345,6 +345,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9334999595",
     "name": "[Platform] Brick as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -352,7 +353,6 @@
     "useCase": "liveness for boiva platform",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services",
-    "childCompanies": "Brick (Boiva) as Client",
     "status": "Existing",
     "totalClient": 50,
     "existingClient": 1,
@@ -360,6 +360,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9606531601",
     "name": "[System Integrator] Sekawan Media as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -367,7 +368,6 @@
     "useCase": "ekyc, signing and emeterai",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services; Government",
-    "childCompanies": "Sekawan Media as Client",
     "status": "Existing",
     "totalClient": 20,
     "existingClient": 1,
@@ -375,6 +375,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "20142955400",
     "name": "[System Integrator] Bank Sahabat Sampoerna as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -382,7 +383,6 @@
     "useCase": "ekyc",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Banking; Financial Services",
-    "childCompanies": "Bank Sahabat Sampoerna",
     "status": "Existing",
     "totalClient": 1,
     "existingClient": 1,
@@ -390,6 +390,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "15315665991",
     "name": "[Platform] Verihubs as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -397,7 +398,6 @@
     "useCase": "Income verification",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Banking; Financial Services",
-    "childCompanies": "",
     "status": "Existing",
     "totalClient": 100,
     "existingClient": null,
@@ -405,6 +405,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "10728118034",
     "name": "[System Integrator] Mitrasoft Global Perdana as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -412,7 +413,6 @@
     "useCase": "ekyc, signinig for BPRS",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Rural Bank",
-    "childCompanies": "",
     "status": "Existing",
     "totalClient": 10,
     "existingClient": null,
@@ -420,6 +420,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "237560273652",
     "name": "[Platform] Advance.AI as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -427,7 +428,6 @@
     "useCase": "ekyc",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Banking; Financial Services",
-    "childCompanies": "",
     "status": "Existing",
     "totalClient": null,
     "existingClient": null,
@@ -435,6 +435,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9689424808",
     "name": "[Reseller] Accurate as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -442,7 +443,6 @@
     "useCase": "Digital SIgn on Accounting Platform",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; Financial Services",
-    "childCompanies": "",
     "status": "Existing",
     "totalClient": 100000,
     "existingClient": 20,
@@ -450,6 +450,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "19053345114",
     "name": "[Platform] Medinfras as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -457,7 +458,6 @@
     "useCase": "Digital sign for BPJS",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Healthcare (Hospital)",
-    "childCompanies": "RS Boromeus, RS Duta Indah, RS Elizabeth, RS Rapha Theresia Jambi, RS STELLA MARIS, RS. Panti Waluya Sawahan Malang, Rumah Sakit St. Carolus",
     "status": "Existing",
     "totalClient": 10,
     "existingClient": 7,
@@ -465,6 +465,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9334976065",
     "name": "[Developer] Pactindo as Partner",
     "type": "Solution Partner",
     "subType": "Developer Partner",
@@ -472,7 +473,6 @@
     "useCase": "Online onboarding for Bank Mobile Apps",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Banking; Rural Bank",
-    "childCompanies": "Bank Artha Graha, Bank Chinatrust, Bank Ganesha, Bank Ina, Bank Index Selindo, Bank Jambi, Bank Jtrust Indonesia Tbk, Bank Kalsel, Bank Mandiri Taspen, Bank Mas, Bank Maspion, Bank Of India Indonesia, Bank Panin Dubai Syariah, Bank Papua, Bank Sulselbar, Bank Woori Saudara Indonesia 1906, BCA Syariah, BPR Azas, BTPN Syariah, CCBI, Internet Banking (IB), MB Pactindo, Pac Cash",
     "status": "Existing",
     "totalClient": 40,
     "existingClient": 23,
@@ -480,6 +480,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "14863569195",
     "name": "[Platform] DocuSign as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -487,7 +488,6 @@
     "useCase": "Digital sign for Multinational company",
     "owner": "Zata Dani Yara Bresia",
     "industry": "FMCG; Retail; MNCs",
-    "childCompanies": "Catterpillar Finance Indonesia",
     "status": "Existing",
     "totalClient": 1000,
     "existingClient": 1,
@@ -495,6 +495,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "264035630792",
     "name": "[Platform] Adobesign as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -502,7 +503,6 @@
     "useCase": "Digital sign for Multinational company",
     "owner": "Zata Dani Yara Bresia",
     "industry": "FMCG; Retail; MNCs",
-    "childCompanies": "Kalbe",
     "status": "Existing",
     "totalClient": 1000,
     "existingClient": 1,
@@ -510,6 +510,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "19516735651",
     "name": "[System Integrator] Digitcode as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -517,7 +518,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "SME",
-    "childCompanies": "Nukar",
     "status": "Existing",
     "totalClient": 10,
     "existingClient": 1,
@@ -525,6 +525,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "240838507210",
     "name": "[Reseller] Medinfrans as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -532,7 +533,6 @@
     "useCase": "Digital sign for BPJS",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Healthcare (Hospital)",
-    "childCompanies": "RS Rapha Theresia Jambi,",
     "status": "Existing",
     "totalClient": 10,
     "existingClient": 2,
@@ -540,6 +540,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "17418408735",
     "name": "[Reseller] Sevensky as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -547,7 +548,6 @@
     "useCase": "Estamp for BPN",
     "owner": "Zata Dani Yara Bresia",
     "industry": "SME; Government ; Public Sector",
-    "childCompanies": "",
     "status": "Existing",
     "totalClient": null,
     "existingClient": null,
@@ -555,6 +555,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "16399973444",
     "name": "[Reseller] DigiHealth.id as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -562,7 +563,6 @@
     "useCase": "Digital Sign",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Healthcare (Hospital)",
-    "childCompanies": "Klinik TOP Jonggol, RS Kenari Graha Medika Cileungsi",
     "status": "Existing",
     "totalClient": 2,
     "existingClient": 2,
@@ -570,6 +570,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "17697150499",
     "name": "[Platform] Telkom Metra as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -577,7 +578,6 @@
     "useCase": "Digital sign in Tax Platform owned by Telkom Metra",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Telco; Government; Public Sector",
-    "childCompanies": "Telkom Metra",
     "status": "Existing",
     "totalClient": 5,
     "existingClient": 1,
@@ -585,6 +585,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "15827853438",
     "name": "[Platform] Momofin as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -592,7 +593,6 @@
     "useCase": "Digital sign on Emeterai Platform",
     "owner": "Zata Dani Yara Bresia",
     "industry": "SME",
-    "childCompanies": "Momofin as Client",
     "status": "Existing",
     "totalClient": 100,
     "existingClient": 1,
@@ -600,6 +600,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "39777608819",
     "name": "[Reseller] Mitra Infotech as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -607,7 +608,6 @@
     "useCase": "Reseller for Adobe sign",
     "owner": "Zata Dani Yara Bresia",
     "industry": "SME; Government ; Public Sector",
-    "childCompanies": "Perum Jasa Tirta 1",
     "status": "Existing",
     "totalClient": 10,
     "existingClient": 1,
@@ -615,6 +615,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "15356711318",
     "name": "[System Integrator] Invelli Solusindo as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -622,7 +623,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Rural Bank",
-    "childCompanies": "Koperasi and BPR",
     "status": "Existing",
     "totalClient": 10,
     "existingClient": 1,
@@ -630,6 +630,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "14946190739",
     "name": "[System Integrator] Wide Technology as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -637,7 +638,6 @@
     "useCase": "Developer for BPR's Internet Banking",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Banking; Rural Bank",
-    "childCompanies": "BPR Rifi Maligi, CMS Widetech, Izzyfin",
     "status": "Existing",
     "totalClient": 3,
     "existingClient": 3,
@@ -645,6 +645,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "10819451745",
     "name": "[Platform] CBI as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -652,7 +653,6 @@
     "useCase": "Digital sign for Credit Checking",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Financial Services",
-    "childCompanies": "Skorku",
     "status": "Existing",
     "totalClient": 5,
     "existingClient": 1,
@@ -660,6 +660,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "10042343350",
     "name": "[Platform] EID Easy as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -667,7 +668,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "FMCG; Retail; MNCs",
-    "childCompanies": "EidEasy",
     "status": "Existing",
     "totalClient": 1,
     "existingClient": 1,
@@ -675,6 +675,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9840845894",
     "name": "[Reseller] Data Tekno as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -682,7 +683,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "FMCG; Retail; MNCs",
-    "childCompanies": "Bumi Berkah Boga",
     "status": "Existing",
     "totalClient": 25,
     "existingClient": 1,
@@ -690,6 +690,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9334725508",
     "name": "[Reseller] Jalin as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -697,7 +698,6 @@
     "useCase": "Private CA for GPN",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Banking; Public Sector",
-    "childCompanies": "Jalin as Client",
     "status": "Existing",
     "totalClient": 80,
     "existingClient": 1,
@@ -705,6 +705,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "15675965273",
     "name": "[Developer] Sinergic as Partner",
     "type": "Solution Partner",
     "subType": "Developer Partner",
@@ -712,7 +713,6 @@
     "useCase": "Developer for BPR's Internet Banking",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Rural Bank",
-    "childCompanies": "10 BPR",
     "status": "Existing",
     "totalClient": 5,
     "existingClient": 1,
@@ -720,6 +720,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "10135037989",
     "name": "[Platform] Sijitu Regtech Asia as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -727,7 +728,6 @@
     "useCase": "AML Platform",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Banking; Financial Services",
-    "childCompanies": "APPUI as Client, Bank Nagari as Client, Batavia Prosporindo Finance, Chubb Life as Client, Greenfields, Hino Finance Indonesia, Kaya Lautan Permata, Sijitu as Client",
     "status": "Existing",
     "totalClient": 15,
     "existingClient": 8,
@@ -735,6 +735,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "9228074769",
     "name": "[System Integrator] Astra Integrasi Digital as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -742,7 +743,6 @@
     "useCase": "System Integrator for Astra's Ecosystem",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Multifinance; Financial Services",
-    "childCompanies": "AAB, Astra Integrasi Digital as Client, Bank Saqu, FIF",
     "status": "Existing",
     "totalClient": 11,
     "existingClient": 4,
@@ -750,6 +750,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "9308173212",
     "name": "[System Integrator] Itruzz as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -757,7 +758,6 @@
     "useCase": "System Integrator",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Financial Services",
-    "childCompanies": "Akulaku, Asetku",
     "status": "Existing",
     "totalClient": 10,
     "existingClient": 2,
@@ -765,6 +765,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9334990396",
     "name": "[Reseller] MII as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -772,7 +773,6 @@
     "useCase": "Reseller for Docusign & Adobesign",
     "owner": "Zata Dani Yara Bresia",
     "industry": "FMCG; Retail; MNCs",
-    "childCompanies": "IFG Life, Jotun, PT Amman Mineral Nusa Tenggara, Siemens Energy, Schneider Electric, Nusautama Medicalindo, mc-dgmi.com, Xiaomi, Petrochina, MC TRADING",
     "status": "Existing",
     "totalClient": 500,
     "existingClient": 10,
@@ -780,6 +780,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "15984057694",
     "name": "[Platform] Periksa.id as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -787,7 +788,6 @@
     "useCase": "Digital sign for BPJS",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Healthcare (Hospital)",
-    "childCompanies": "12 RS Pilot Projects, Rumah Sakit Marinir Cilandak",
     "status": "Existing",
     "totalClient": 500,
     "existingClient": 2,
@@ -795,6 +795,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "237560273652",
     "name": "[Platform] AWS as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -802,7 +803,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "FMCG; Retail; MNCs",
-    "childCompanies": "",
     "status": "New",
     "totalClient": null,
     "existingClient": null,
@@ -810,6 +810,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "231909239495",
     "name": "[Reseller] Pajak.io as partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -817,7 +818,6 @@
     "useCase": "Tax Platform",
     "owner": "Zata Dani Yara Bresia",
     "industry": "SME; FMCG; Retail",
-    "childCompanies": "",
     "status": "New",
     "totalClient": null,
     "existingClient": null,
@@ -825,6 +825,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "39289447725",
     "name": "[Platform] Alibaba as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -832,7 +833,6 @@
     "useCase": "Verification's Platform",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Banking; Multifinance; Financial Services",
-    "childCompanies": "Alibaba",
     "status": "New",
     "totalClient": 100,
     "existingClient": 1,
@@ -840,6 +840,7 @@
     "abpStatus": "Support to ABP"
   },
   {
+    "parentId": "28226706457",
     "name": "[System Integrator] FreeLink as a Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -847,7 +848,6 @@
     "useCase": "System Integrator for Docusign",
     "owner": "Zata Dani Yara Bresia",
     "industry": "FMCG; Retail; MNCs",
-    "childCompanies": "Contemporary Amperex Technology, Haitian Flavouring & Food Co",
     "status": "New",
     "totalClient": 25,
     "existingClient": 2,
@@ -855,6 +855,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "10132039797",
     "name": "[Platform] IDfy as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -862,7 +863,6 @@
     "useCase": "Verification's Platform",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Financial Services",
-    "childCompanies": "Idfy as client",
     "status": "New",
     "totalClient": 5,
     "existingClient": 1,
@@ -870,6 +870,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "40806061717",
     "name": "[Platform] Medisin as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -877,7 +878,6 @@
     "useCase": "Digital sign for BPJS",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Healthcare (Hospital)",
-    "childCompanies": "Labkesda Paser, Medisin.id",
     "status": "New",
     "totalClient": 25,
     "existingClient": 2,
@@ -885,6 +885,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "17639087692",
     "name": "[Platform] Pefindo Biro Kredit as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -892,7 +893,6 @@
     "useCase": "Credit Beaureu",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Financial Services",
-    "childCompanies": "MyIDScore, IDPreScreen",
     "status": "New",
     "totalClient": 100,
     "existingClient": 2,
@@ -900,6 +900,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "20142987836",
     "name": "[Platform] Mitra Pajakku as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -907,7 +908,6 @@
     "useCase": "Digital Signing for Tax Documents",
     "owner": "Anneke Ivana Puspasari",
     "industry": "SME; FMCG; Retail",
-    "childCompanies": "",
     "status": "New",
     "totalClient": 100,
     "existingClient": null,
@@ -915,6 +915,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "9334999594",
     "name": "[Reseller] IST as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -922,7 +923,6 @@
     "useCase": "eKYC, Signing, OCR, Liveness for client app",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Banking; Financial Services; Public Sector; Government",
-    "childCompanies": "",
     "status": "New",
     "totalClient": 20,
     "existingClient": null,
@@ -930,6 +930,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "320449661651",
     "name": "[Reseller] Artajasa as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -937,7 +938,6 @@
     "useCase": "ekyc, liveness, signing for client app",
     "owner": "Anneke Ivana Puspasari",
     "industry": "Banking; Financial Services",
-    "childCompanies": "Gudang Voucher",
     "status": "New",
     "totalClient": 47,
     "existingClient": 1,
@@ -945,6 +945,7 @@
     "abpStatus": "Non Support to ABP"
   },
   {
+    "parentId": "271801976533",
     "name": "[Reseller] Liyuebi as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -952,7 +953,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -960,6 +960,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "219334185676",
     "name": "[Platform Partner] - Pandawa Teknologi (PYAT) as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -967,7 +968,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -975,6 +975,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "210994594528",
     "name": "[System Integrator] Azentra Solusi Digital as Partner",
     "type": "Solution Partner",
     "subType": "System Integrator Partner",
@@ -982,7 +983,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -990,6 +990,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "39337872311",
     "name": "[Reseller] Coco Ride as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -997,7 +998,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1005,6 +1005,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "25500360763",
     "name": "[Platform] Pajak.io as partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1012,7 +1013,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1020,6 +1020,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "317834512075",
     "name": "[System Integrator] Multipolar as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -1027,7 +1028,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1035,6 +1035,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "317926657750",
     "name": "[System Integrator] Radius as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -1042,7 +1043,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1050,6 +1050,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "303408746226",
     "name": "[Platform] Dartmedia as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1057,7 +1058,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1065,6 +1065,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "291495768809",
     "name": "[Platform] - PERIXA.ID",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1072,7 +1073,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1080,6 +1080,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "285260287703",
     "name": "[Platform] Rey ID as partner",
     "type": "Access Partner",
     "subType": "Platform Partner (ISV)",
@@ -1087,7 +1088,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1095,6 +1095,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "274850620092",
     "name": "[System Integrator] Global Infotech as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -1102,7 +1103,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1110,6 +1110,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "205075343071",
     "name": "[Platform] SPIsy as partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1117,7 +1118,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1125,6 +1125,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "40833442132",
     "name": "[Platform] MyKlinik as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1132,7 +1133,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1140,6 +1140,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "39883298821",
     "name": "[Reseller] Azentra Solusi Digital (ASD) as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1147,7 +1148,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1155,6 +1155,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "39482189653",
     "name": "[Platform] PLN Icon+ as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1162,7 +1163,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1170,6 +1170,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "39480296856",
     "name": "[Reseller] Radius Data as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1177,7 +1178,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1185,6 +1185,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "36506287774",
     "name": "[Referral] Lisanna as Partner",
     "type": "Access Partner",
     "subType": "Broker / Referral Partner",
@@ -1192,7 +1193,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1200,6 +1200,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "36343714363",
     "name": "[Reseller] Feedloop.id as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1207,7 +1208,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1215,6 +1215,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "30380847733",
     "name": "[Platform] My Medica As a Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1222,7 +1223,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1230,6 +1230,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "27985243218",
     "name": "[Reseller] CIA as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1237,7 +1238,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1245,6 +1245,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "27896880460",
     "name": "[System Integrator] Reycom Document Solusi as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -1252,7 +1253,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1260,6 +1260,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "22920607365",
     "name": "[Platform] Tsign (e签宝) as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1267,7 +1268,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1275,6 +1275,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "22812239720",
     "name": "[Platform] VAS as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1282,7 +1283,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1290,6 +1290,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "22647935892",
     "name": "[Platform] PT Datanet Indomedia",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1297,7 +1298,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1305,6 +1305,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "41576976561",
     "name": "[Developer] Lentra as Partner",
     "type": "Solution Partner",
     "subType": "Developer Partner",
@@ -1312,7 +1313,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1320,6 +1320,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "18074117911",
     "name": "[Reseller] Metrocom Jaddi Technology as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1327,7 +1328,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1335,6 +1335,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "17637682318",
     "name": "[Reseller] Jatis as a Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1342,7 +1343,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1350,6 +1350,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "10797833859",
     "name": "[System Integrator] Xapiens Teknologi Indonesia as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -1357,7 +1358,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1365,6 +1365,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "9849885755",
     "name": "[System integrator] Aiforesee as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -1372,7 +1373,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1380,6 +1380,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "9643613965",
     "name": "[Reseller] Anabatic Solusi Digital as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1387,7 +1388,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1395,6 +1395,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "9334983177",
     "name": "[System Integrator] Nodeflux as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1402,7 +1403,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1410,6 +1410,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "9334997894",
     "name": "[Platform] Mitra Jasa Lima as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1417,7 +1418,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1425,6 +1425,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "14951436841",
     "name": "[Reseller] Multipolar Technology as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1432,7 +1433,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1440,6 +1440,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "318781035205",
     "name": "[Reseller] Askarasoft as Partner",
     "type": "Access Partner",
     "subType": "Reseller Partner",
@@ -1447,7 +1448,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1455,6 +1455,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "318781754059",
     "name": "[Platform] Next TI as partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1462,7 +1463,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1470,6 +1470,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "318781754064",
     "name": "[System Integrator] Monklabs as Partner",
     "type": "Access Partner",
     "subType": "System Integrator Partner",
@@ -1477,7 +1478,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1485,6 +1485,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "16166914736",
     "name": "[System Integrator] Etalas as partner",
     "type": "Solution Partner",
     "subType": "System Integrator Partner",
@@ -1492,7 +1493,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1500,6 +1500,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "23587060303",
     "name": "[System Integrator] Beeza as Partner",
     "type": "Solution Partner",
     "subType": "System Integrator Partner",
@@ -1507,7 +1508,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1515,6 +1515,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "318783192776",
     "name": "[Developer] Sanova as Partner",
     "type": "Solution Partner",
     "subType": "Developer Partner",
@@ -1522,7 +1523,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1530,6 +1530,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "318780313311",
     "name": "[Platform] Megvii as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1537,7 +1538,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1545,6 +1545,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "29972318338",
     "name": "[Platform] IOH as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1552,7 +1553,6 @@
     "useCase": "",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1560,6 +1560,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "28858088067",
     "name": "[Platform] IDS as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1567,7 +1568,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1575,6 +1575,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "9868368555",
     "name": "[Referral] ALUDI as Partner",
     "type": "Access Partner",
     "subType": "Broker / Referral Partner",
@@ -1582,7 +1583,6 @@
     "useCase": "",
     "owner": "Zata Dani Yara Bresia",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1590,6 +1590,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "30345708217",
     "name": "[Platform] Namirial as Partner",
     "type": "Solution Partner",
     "subType": "Platform Partner (ISV)",
@@ -1597,7 +1598,6 @@
     "useCase": "Digital sign platform (CSC) for India & MNC",
     "owner": "",
     "industry": "",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
@@ -1605,6 +1605,7 @@
     "abpStatus": ""
   },
   {
+    "parentId": "9334997893",
     "name": "[Developer Partner] Collega (Telkom Group) as Partner",
     "type": "Solution Partner",
     "subType": "Developer Partner",
@@ -1612,7 +1613,6 @@
     "useCase": "Mobile Banking Developer",
     "owner": "Zata Dani Yara Bresia",
     "industry": "Banking; Financial Services",
-    "childCompanies": "",
     "status": "Pipeline",
     "totalClient": null,
     "existingClient": null,
