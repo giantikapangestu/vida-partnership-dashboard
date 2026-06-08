@@ -538,16 +538,52 @@ tbody tr:hover td{background:#F8F9FC}
 
     <!-- Full ABP table -->
     <div class="tbl-scroll">
+      <!-- ABP Filter bar -->
+      <div class="filter-bar" id="abp-filter-bar">
+        <span class="filter-label">Filter:</span>
+        <div class="filter-group" id="afg-status">
+          <button class="filter-btn" onclick="toggleDropdown('add-status',this)">Status <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="filter-dropdown" id="add-status">
+            <label class="filter-option"><input type="checkbox" value="Existing" onchange="filterABP()"> <span style="color:var(--green);font-weight:700">●</span> Existing</label>
+            <label class="filter-option"><input type="checkbox" value="New" onchange="filterABP()"> <span style="color:var(--blue);font-weight:700">●</span> New</label>
+          </div>
+        </div>
+        <div class="filter-group" id="afg-abp">
+          <button class="filter-btn" onclick="toggleDropdown('add-abp',this)">ABP Status <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="filter-dropdown" id="add-abp">
+            <label class="filter-option"><input type="checkbox" value="ABP" onchange="filterABP()"> ✅ Support to ABP</label>
+            <label class="filter-option"><input type="checkbox" value="Non-ABP" onchange="filterABP()"> ❌ Non Support to ABP</label>
+          </div>
+        </div>
+        <div class="filter-group" id="afg-ind">
+          <button class="filter-btn" onclick="toggleDropdown('add-ind',this)">Industry <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="filter-dropdown" id="add-ind" style="min-width:220px;max-height:240px;overflow-y:auto">
+            <label class="filter-option"><input type="checkbox" value="Banking" onchange="filterABP()"> Banking</label>
+            <label class="filter-option"><input type="checkbox" value="Financial Services" onchange="filterABP()"> Financial Services</label>
+            <label class="filter-option"><input type="checkbox" value="Multifinance" onchange="filterABP()"> Multifinance</label>
+            <label class="filter-option"><input type="checkbox" value="Healthcare" onchange="filterABP()"> Healthcare</label>
+            <label class="filter-option"><input type="checkbox" value="Government" onchange="filterABP()"> Government</label>
+            <label class="filter-option"><input type="checkbox" value="SME" onchange="filterABP()"> SME</label>
+            <label class="filter-option"><input type="checkbox" value="Telco" onchange="filterABP()"> Telco</label>
+            <label class="filter-option"><input type="checkbox" value="FMCG" onchange="filterABP()"> FMCG / Retail</label>
+            <label class="filter-option"><input type="checkbox" value="Rural Bank" onchange="filterABP()"> Rural Bank</label>
+          </div>
+        </div>
+        <button class="filter-clear-btn" onclick="resetABPFilters()">✕ Reset</button>
+        <span class="filter-result" id="abp-filter-result"></span>
+      </div>
       <table id="tbl-abp">
         <thead><tr>
-          <th style="width:19%">Partner</th>
-          <th style="width:9%">Status</th>
-          <th style="width:10%">ABP</th>
-          <th style="width:10%">Total clients</th>
-          <th style="width:9%">VIDA existing</th>
-          <th style="width:9%">Target</th>
-          <th style="width:10%">Attainment</th>
-          <th style="width:24%">Use-case</th>
+          <th style="width:16%">Partner</th>
+          <th style="width:8%">Status</th>
+          <th style="width:9%">ABP</th>
+          <th style="width:11%">Sub-type</th>
+          <th style="width:12%">Industry</th>
+          <th style="width:8%">Total</th>
+          <th style="width:8%">Existing</th>
+          <th style="width:7%">Target</th>
+          <th style="width:8%">Attainment</th>
+          <th style="width:13%">Use-case</th>
         </tr></thead>
         <tbody><tr><td colspan="8"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
       </table>
@@ -777,6 +813,8 @@ function renderABP(data){
       </td>
       <td>${statusB(p.status)}</td>
       <td>${isABP ? badge('ABP','b-green') : badge('Non-ABP','b-gray')}</td>
+      <td>${subB(p.subType)}</td>
+      <td class="t-industry" title="${p.industry}">${p.industry||'—'}</td>
       <td class="t-num">${fmt(p.totalClient)}</td>
       <td class="t-num">${fmt(p.existingClient)}</td>
       <td class="t-num">${fmt(p.targetClient)}</td>
@@ -905,6 +943,33 @@ function renderDashboard(d){
   renderExisting(d.existing || []);
   renderNew(d.newPartners || []);
   renderABP(d.abpList || []);
+}
+
+// ── ABP Table Filter ─────────────────────────────────────────────────────────
+function filterABP(){
+  const sts=getChecked('add-status'),abps=getChecked('add-abp'),inds=getChecked('add-ind');
+  updBtn('afg-status','add-status');updBtn('afg-abp','add-abp');updBtn('afg-ind','add-ind');
+  let vis=0;
+  document.querySelectorAll('#tbl-abp tbody tr').forEach(row=>{
+    const cells=row.querySelectorAll('td');if(cells.length<3){row.style.display='';return;}
+    const txt=row.textContent;
+    const st=cells[1]?.textContent?.trim()||'';
+    const ab=cells[2]?.textContent?.trim()||'';
+    const ind=cells[4]?.textContent?.trim()||'';
+    const mS=!sts.length||sts.some(v=>st.includes(v));
+    const mA=!abps.length||abps.some(v=>ab.includes(v));
+    const mI=!inds.length||inds.some(v=>ind.toLowerCase().includes(v.toLowerCase()));
+    const show=mS&&mA&&mI;
+    row.style.display=show?'':'none';if(show)vis++;
+  });
+  const tot=document.querySelectorAll('#tbl-abp tbody tr').length;
+  const re=$('abp-filter-result');
+  if(re){const hf=sts.length||abps.length||inds.length;re.textContent=hf?vis+' of '+tot+' shown':'';}
+}
+function resetABPFilters(){
+  document.querySelectorAll('#abp-filter-bar input').forEach(cb=>{cb.checked=false;});
+  document.querySelectorAll('#abp-filter-bar .filter-btn').forEach(btn=>{btn.classList.remove('active');const b=btn.querySelector('.f-count');if(b)b.remove();});
+  filterABP();
 }
 
 // ── Auth helpers ──────────────────────────────────────────────────────────────
