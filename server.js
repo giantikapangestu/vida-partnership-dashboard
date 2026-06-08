@@ -71,7 +71,7 @@ function getSheetsClient() {
 function parseNum(v) { if (v == null || v === "") return null; const n = Number(String(v).replace(/,/g, "")); return isNaN(n) ? null : n; }
 function str(v) { return (v == null || v === "") ? "" : String(v).trim(); }
 function rowToPartner(row) {
-  return { name: str(row[COL.name]), type: str(row[COL.type]), subType: str(row[COL.subType]), tier: str(row[COL.tier]), useCase: str(row[COL.useCase]), owner: str(row[COL.owner]), industry: str(row[COL.industry]), status: str(row[COL.status]), totalClient: parseNum(row[COL.totalClient]), existingClient: parseNum(row[COL.existingClient]), targetClient: parseNum(row[COL.targetClient]), abpStatus: str(row[COL.abpStatus]) };
+  return { parentId: str(row[COL.parentId]), name: str(row[COL.name]), type: str(row[COL.type]), subType: str(row[COL.subType]), tier: str(row[COL.tier]), useCase: str(row[COL.useCase]), owner: str(row[COL.owner]), industry: str(row[COL.industry]), status: str(row[COL.status]), totalClient: parseNum(row[COL.totalClient]), existingClient: parseNum(row[COL.existingClient]), targetClient: parseNum(row[COL.targetClient]), abpStatus: str(row[COL.abpStatus]) };
 }
 async function loadFromSheets() {
   const sheets = getSheetsClient();

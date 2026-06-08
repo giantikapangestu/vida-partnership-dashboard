@@ -481,16 +481,13 @@ tbody tr:hover td{background:#F8F9FC}
       <div class="tbl-scroll">
         <table id="tbl-existing">
           <thead><tr>
-            <th style="width:21%">Partner</th>
-            <th style="width:10%">Type</th>
-            <th style="width:12%">Sub-type</th>
-            <th style="width:15%">Industry</th>
-            <th style="width:7%">Tier</th>
-            <th style="width:9%">Total clients</th>
-            <th style="width:11%">VIDA existing</th>
-            <th style="width:15%">ABP status</th>
+            <th style="width:32%">Partner name</th>
+            <th style="width:18%">Type</th>
+            <th style="width:22%">Sub-type</th>
+            <th style="width:15%">Tier</th>
+            <th style="width:13%">HubSpot</th>
           </tr></thead>
-          <tbody><tr><td colspan="8"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
+          <tbody><tr><td colspan="5"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
         </table>
       </div>
     </div>
@@ -500,15 +497,13 @@ tbody tr:hover td{background:#F8F9FC}
       <div class="tbl-scroll">
         <table id="tbl-new">
           <thead><tr>
-            <th style="width:24%">Partner</th>
-            <th style="width:11%">Type</th>
-            <th style="width:13%">Sub-type</th>
-            <th style="width:16%">Industry</th>
-            <th style="width:8%">Tier</th>
-            <th style="width:12%">Target clients</th>
-            <th style="width:16%">ABP status</th>
+            <th style="width:32%">Partner name</th>
+            <th style="width:18%">Type</th>
+            <th style="width:22%">Sub-type</th>
+            <th style="width:15%">Tier</th>
+            <th style="width:13%">HubSpot</th>
           </tr></thead>
-          <tbody><tr><td colspan="7"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
+          <tbody><tr><td colspan="5"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
         </table>
       </div>
     </div>
@@ -731,9 +726,20 @@ function renderFunnel(funnel, stats){
 }
 
 // ── Table renderers ───────────────────────────────────────────────────────────
+function hubspotLink(p){
+  if(p.parentId && p.parentId.trim() !== ''){
+    return `<a href="https://app-na2.hubspot.com/contacts/22044185/company/${p.parentId}" target="_blank" rel="noopener"
+      style="display:inline-flex;align-items:center;gap:4px;color:var(--blue);font-size:11px;font-weight:600;text-decoration:none;padding:3px 8px;border:1px solid var(--blue-l);border-radius:20px;background:var(--blue-l)">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      View
+    </a>`;
+  }
+  return '<span style="color:var(--text-3);font-size:11px">—</span>';
+}
+
 function renderExisting(data){
   const tbody = document.querySelector('#tbl-existing tbody');
-  if(!data.length){ tbody.innerHTML=`<tr><td colspan="8"><div class="empty">No existing partners found</div></td></tr>`; return; }
+  if(!data.length){ tbody.innerHTML=`<tr><td colspan="5"><div class="empty">No existing partners found</div></td></tr>`; return; }
   tbody.innerHTML = data.map(p=>`<tr>
     <td>
       <div class="t-name" title="${p.name}">${cleanName(p.name)}</div>
@@ -741,17 +747,14 @@ function renderExisting(data){
     </td>
     <td>${typeB(p.type)}</td>
     <td>${subB(p.subType)}</td>
-    <td class="t-industry" title="${p.industry}">${p.industry||'—'}</td>
     <td>${tierB(p.tier)}</td>
-    <td class="t-num">${fmt(p.totalClient)}</td>
-    <td>${progBar(p.existingClient, p.totalClient)}</td>
-    <td>${abpB(p.abpStatus)}</td>
+    <td>${hubspotLink(p)}</td>
   </tr>`).join('');
 }
 
 function renderNew(data){
   const tbody = document.querySelector('#tbl-new tbody');
-  if(!data.length){ tbody.innerHTML=`<tr><td colspan="7"><div class="empty">No new partners found</div></td></tr>`; return; }
+  if(!data.length){ tbody.innerHTML=`<tr><td colspan="5"><div class="empty">No new partners found</div></td></tr>`; return; }
   tbody.innerHTML = data.map(p=>`<tr>
     <td>
       <div class="t-name" title="${p.name}">${cleanName(p.name)}</div>
@@ -759,10 +762,8 @@ function renderNew(data){
     </td>
     <td>${typeB(p.type)}</td>
     <td>${subB(p.subType)}</td>
-    <td class="t-industry" title="${p.industry}">${p.industry||'—'}</td>
     <td>${tierB(p.tier)}</td>
-    <td class="t-num">${fmt(p.targetClient||p.totalClient)}</td>
-    <td>${abpB(p.abpStatus)}</td>
+    <td>${hubspotLink(p)}</td>
   </tr>`).join('');
 }
 
