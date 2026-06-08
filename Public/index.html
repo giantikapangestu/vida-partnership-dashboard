@@ -855,33 +855,30 @@ function updBtn(fgId,ddId,label){
 }
 function filterTable(){
   const q=($('searchInput').value||'').toLowerCase();
-  const types=getChecked('dd-type'),subs=getChecked('dd-subtype'),tiers=getChecked('dd-tier'),abps=getChecked('dd-abp'),inds=getChecked('dd-industry');
-  updBtn('fg-type','dd-type');updBtn('fg-subtype','dd-subtype');updBtn('fg-tier','dd-tier');updBtn('fg-abp','dd-abp');updBtn('fg-industry','dd-industry');
+  const types=getChecked('dd-type'),subs=getChecked('dd-subtype'),tiers=getChecked('dd-tier');
+  updBtn('fg-type','dd-type');updBtn('fg-subtype','dd-subtype');updBtn('fg-tier','dd-tier');
   let vis=0;
   document.querySelectorAll('.tab-panel.active tbody tr').forEach(row=>{
     const cells=row.querySelectorAll('td');if(cells.length<2){row.style.display='';return;}
     const txt=row.textContent.toLowerCase();
     const t=cells[1]?.textContent?.trim()||'';
     const st=cells[2]?.textContent?.trim()||'';
-    const ind=cells[3]?.textContent?.trim()||'';
-    const ti=cells[4]?.textContent?.trim()||'';
+    const ti=cells[3]?.textContent?.trim()||'';
     const mQ=!q||txt.includes(q);
     const mT=!types.length||types.some(v=>t.includes(v.includes('Solution')?'Solution':'Access'));
     const mS=!subs.length||subs.some(v=>st.includes(v));
     const mTi=!tiers.length||tiers.some(v=>ti.includes(v));
-    const mA=!abps.length||abps.some(v=>txt.includes(v));
-    const mI=!inds.length||inds.some(v=>ind.toLowerCase().includes(v.toLowerCase()));
-    const show=mQ&&mT&&mS&&mTi&&mA&&mI;
+    const show=mQ&&mT&&mS&&mTi;
     row.style.display=show?'':'none';if(show)vis++;
   });
   const tot=document.querySelectorAll('.tab-panel.active tbody tr').length;
   const re=$('filter-result');
-  if(re){const hf=q||types.length||subs.length||tiers.length||abps.length||inds.length;re.textContent=hf?vis+' of '+tot+' shown':'';}
+  if(re){const hf=q||types.length||subs.length||tiers.length;re.textContent=hf?vis+' of '+tot+' shown':'';}
 }
 function resetFilters(){
-  document.querySelectorAll('.filter-bar input').forEach(cb=>{cb.checked=false;});
+  document.querySelectorAll('#filter-bar input').forEach(cb=>{cb.checked=false;});
   $('searchInput').value='';
-  document.querySelectorAll('.filter-btn').forEach(btn=>{btn.classList.remove('active');const b=btn.querySelector('.f-count');if(b)b.remove();});
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(btn=>{btn.classList.remove('active');const b=btn.querySelector('.f-count');if(b)b.remove();});
   filterTable();
 }
 
