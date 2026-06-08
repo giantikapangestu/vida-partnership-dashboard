@@ -446,28 +446,6 @@ tbody tr:hover td{background:#F8F9FC}
           <label class="filter-option"><input type="checkbox" value="Regular" onchange="filterTable()"> Regular</label>
         </div>
       </div>
-      <div class="filter-group" id="fg-abp">
-        <button class="filter-btn" onclick="toggleDropdown('dd-abp',this)">ABP Status <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="filter-dropdown" id="dd-abp">
-          <label class="filter-option"><input type="checkbox" value="ABP" onchange="filterTable()"> ✅ Support to ABP</label>
-          <label class="filter-option"><input type="checkbox" value="Non-ABP" onchange="filterTable()"> ❌ Non Support to ABP</label>
-        </div>
-      </div>
-      <div class="filter-group" id="fg-industry">
-        <button class="filter-btn" onclick="toggleDropdown('dd-industry',this)">Industry <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="filter-dropdown" id="dd-industry" style="min-width:220px;max-height:260px;overflow-y:auto">
-          <label class="filter-option"><input type="checkbox" value="Banking" onchange="filterTable()"> Banking</label>
-          <label class="filter-option"><input type="checkbox" value="Financial Services" onchange="filterTable()"> Financial Services</label>
-          <label class="filter-option"><input type="checkbox" value="Multifinance" onchange="filterTable()"> Multifinance</label>
-          <label class="filter-option"><input type="checkbox" value="Healthcare" onchange="filterTable()"> Healthcare</label>
-          <label class="filter-option"><input type="checkbox" value="Government" onchange="filterTable()"> Government</label>
-          <label class="filter-option"><input type="checkbox" value="SME" onchange="filterTable()"> SME</label>
-          <label class="filter-option"><input type="checkbox" value="Telco" onchange="filterTable()"> Telco</label>
-          <label class="filter-option"><input type="checkbox" value="FMCG" onchange="filterTable()"> FMCG / Retail</label>
-          <label class="filter-option"><input type="checkbox" value="Logistics" onchange="filterTable()"> Logistics</label>
-          <label class="filter-option"><input type="checkbox" value="Rural Bank" onchange="filterTable()"> Rural Bank</label>
-        </div>
-      </div>
       <button class="filter-clear-btn" onclick="resetFilters()">✕ Reset</button>
       <span class="filter-result" id="filter-result"></span>
     </div>
