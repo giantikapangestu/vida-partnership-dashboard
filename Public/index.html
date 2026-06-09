@@ -1273,6 +1273,10 @@ function renderDashboard(d){
   renderExisting(d.existing || []);
   renderNew(d.newPartners || []);
   nonAbpData = (d.abpList || []).filter(p=>p.abpStatus==='Non Support to ABP');
+  abpPageData = (d.abpList || []).filter(p=>p.abpStatus==='Support to ABP');
+  if(!abpPageData.length) abpPageData = (d.existing||[]).concat(d.newPartners||[]).filter(p=>p.abpStatus==='Support to ABP');
+  const abpPageEl = document.getElementById('page-abp');
+  if(abpPageEl && abpPageEl.style.display !== 'none') renderABPPage(abpPageData);
   if(document.getElementById('page-nonabp').style.display !== 'none') renderNonABPTable(nonAbpData);
   renderABP(d.abpList || []);
 }
@@ -1310,12 +1314,19 @@ let abpPageData = [];
 function showABP(e){
   if(e) e.preventDefault();
   document.getElementById('page-dashboard').style.display = 'none';
-  document.getElementById('page-nonabp').style.display = 'none';
+  const nonabpEl = document.getElementById('page-nonabp');
+  if(nonabpEl) nonabpEl.style.display = 'none';
   document.getElementById('page-abp').style.display = 'block';
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   const navAbp = document.getElementById('nav-abp');
   if(navAbp) navAbp.classList.add('active');
-  if(abpPageData.length > 0) renderABPPage(abpPageData);
+  // If data already loaded, render immediately
+  if(abpPageData && abpPageData.length > 0){
+    renderABPPage(abpPageData);
+  } else {
+    // Trigger dashboard load to get data
+    loadDashboard();
+  }
 }
 
 function renderABPPage(data){
