@@ -226,7 +226,7 @@ tbody tr:hover td{background:#F8F9FC}
   <nav class="nav">
     <div class="nav-group">
       <div class="nav-label">Overview</div>
-      <a class="nav-item active" href="#">
+      <a class="nav-item active" id="nav-dashboard" onclick="showDashboard(event)" href="#">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
         Dashboard
       </a>
@@ -494,7 +494,55 @@ tbody tr:hover td{background:#F8F9FC}
   </div>
 
   <!-- ── ABP section ─────────────────────────────────────────────────────── -->
-  <div class="section-label">Partner support — ABP &amp; Non-ABP</div>
+  <div class="section-label">Annual plan partner contribution</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Support to ABP</div><div class="card-sub">Client universe &amp; existing VIDA clients</div></div>
+        </div>
+        <div style="padding:12px 14px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
+            <div style="background:var(--surface2);border-radius:var(--r-sm);padding:8px 10px;text-align:center">
+              <div style="font-size:16px;font-weight:700;color:var(--green)" id="abp-contrib-count">—</div>
+              <div style="font-size:9px;color:var(--text-3);margin-top:2px">Partners</div>
+            </div>
+            <div style="background:var(--surface2);border-radius:var(--r-sm);padding:8px 10px;text-align:center">
+              <div style="font-size:16px;font-weight:700;color:var(--text-1)" id="abp-contrib-universe">—</div>
+              <div style="font-size:9px;color:var(--text-3);margin-top:2px">Universe</div>
+            </div>
+            <div style="background:var(--surface2);border-radius:var(--r-sm);padding:8px 10px;text-align:center">
+              <div style="font-size:16px;font-weight:700;color:var(--green)" id="abp-contrib-att">—</div>
+              <div style="font-size:9px;color:var(--text-3);margin-top:2px">Attainment</div>
+            </div>
+          </div>
+          <div id="abp-contrib-bars"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Non-ABP</div><div class="card-sub">Client universe &amp; existing VIDA clients</div></div>
+        </div>
+        <div style="padding:12px 14px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px">
+            <div style="background:var(--surface2);border-radius:var(--r-sm);padding:8px 10px;text-align:center">
+              <div style="font-size:16px;font-weight:700;color:var(--text-3)" id="nonabp-contrib-count">—</div>
+              <div style="font-size:9px;color:var(--text-3);margin-top:2px">Partners</div>
+            </div>
+            <div style="background:var(--surface2);border-radius:var(--r-sm);padding:8px 10px;text-align:center">
+              <div style="font-size:16px;font-weight:700;color:var(--amber)" id="nonabp-contrib-universe">—</div>
+              <div style="font-size:9px;color:var(--text-3);margin-top:2px">Universe</div>
+            </div>
+            <div style="background:var(--surface2);border-radius:var(--r-sm);padding:8px 10px;text-align:center">
+              <div style="font-size:16px;font-weight:700;color:var(--text-3)" id="nonabp-contrib-att">—</div>
+              <div style="font-size:9px;color:var(--text-3);margin-top:2px">Attainment</div>
+            </div>
+          </div>
+          <div id="nonabp-contrib-bars"></div>
+        </div>
+      </div>
+    </div>
+  <div class="section-label" id="partner-support-label">Partner support — ABP &amp; Non-ABP</div>
+  <div class="card
   <div class="card">
     <div class="card-head">
       <div>
@@ -1272,6 +1320,7 @@ function renderDashboard(d){
   // Tables
   renderExisting(d.existing || []);
   renderNew(d.newPartners || []);
+  renderContribution(d.abpList || [], d.existing || [], d.newPartners || []);
   nonAbpData = (d.abpList || []).filter(p=>p.abpStatus==='Non Support to ABP');
   abpPageData = (d.abpList || []).filter(p=>p.abpStatus==='Support to ABP');
   if(!abpPageData.length) abpPageData = (d.existing||[]).concat(d.newPartners||[]).filter(p=>p.abpStatus==='Support to ABP');
@@ -1306,6 +1355,59 @@ function resetABPFilters(){
   document.querySelectorAll('#abp-filter-bar input').forEach(cb=>{cb.checked=false;});
   document.querySelectorAll('#abp-filter-bar .filter-btn').forEach(btn=>{btn.classList.remove('active');const b=btn.querySelector('.f-count');if(b)b.remove();});
   filterABP();
+}
+
+// ── Contribution bars ─────────────────────────────────────────────────────────
+function renderContribution(abpList, existing, newP){
+  const allPartners = abpList.length ? abpList : [...existing, ...newP];
+  const abp    = allPartners.filter(p=>p.abpStatus==='Support to ABP');
+  const nonAbp = allPartners.filter(p=>p.abpStatus==='Non Support to ABP');
+
+  // ABP mini stats
+  const abpUniverse  = abp.reduce((a,p)=>a+(p.totalClient||0),0);
+  const abpExisting  = abp.reduce((a,p)=>a+(p.existingClient||0),0);
+  const abpAtt       = abpUniverse>0 ? Math.round(abpExisting/abpUniverse*100) : 0;
+  const elAC=$('abp-contrib-count'),elAU=$('abp-contrib-universe'),elAA=$('abp-contrib-att');
+  if(elAC) elAC.textContent=abp.length;
+  if(elAU) elAU.textContent=abpUniverse.toLocaleString();
+  if(elAA) elAA.textContent=abpAtt+'%';
+
+  // ABP bars
+  const abpBars=$('abp-contrib-bars');
+  if(abpBars){
+    const maxEx=Math.max(1,...abp.map(p=>p.existingClient||0));
+    abpBars.innerHTML=[...abp].sort((a,b)=>(b.existingClient||0)-(a.existingClient||0)).slice(0,6).map(p=>{
+      const pct=Math.round((p.existingClient||0)/maxEx*100);
+      return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+        <div style="font-size:10px;font-weight:500;color:var(--text-2);min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${cleanName(p.name)}">${cleanName(p.name)}</div>
+        <div style="flex:1;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden"><div style="width:${pct}%;height:100%;background:#1D9E75;border-radius:2px"></div></div>
+        <div style="font-size:10px;font-weight:500;color:#1D9E75;min-width:20px;text-align:right">${p.existingClient||0}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Non-ABP mini stats
+  const naUniverse = nonAbp.reduce((a,p)=>a+(p.totalClient||0),0);
+  const naExisting = nonAbp.reduce((a,p)=>a+(p.existingClient||0),0);
+  const naAtt      = naUniverse>0 ? Math.round(naExisting/naUniverse*100) : 0;
+  const elNC=$('nonabp-contrib-count'),elNU=$('nonabp-contrib-universe'),elNA=$('nonabp-contrib-att');
+  if(elNC) elNC.textContent=nonAbp.length;
+  if(elNU) elNU.textContent=naUniverse>1000?(naUniverse/1000).toFixed(0)+'K+':naUniverse.toLocaleString();
+  if(elNA) elNA.textContent=naAtt+'%';
+
+  // Non-ABP bars (sorted by totalClient)
+  const naBars=$('nonabp-contrib-bars');
+  if(naBars){
+    const maxT=Math.max(1,...nonAbp.map(p=>p.totalClient||0));
+    naBars.innerHTML=[...nonAbp].sort((a,b)=>(b.totalClient||0)-(a.totalClient||0)).slice(0,6).map(p=>{
+      const pct=Math.round((p.totalClient||0)/maxT*100);
+      return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+        <div style="font-size:10px;font-weight:500;color:var(--text-2);min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${cleanName(p.name)}">${cleanName(p.name)}</div>
+        <div style="flex:1;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden"><div style="width:${pct}%;height:100%;background:#888780;border-radius:2px"></div></div>
+        <div style="font-size:10px;font-weight:500;color:var(--text-3);min-width:40px;text-align:right">${(p.totalClient||0)>1000?((p.totalClient||0)/1000).toFixed(0)+'K':p.totalClient||0}</div>
+      </div>`;
+    }).join('');
+  }
 }
 
 // ── ABP Page ──────────────────────────────────────────────────────────────────
@@ -1373,9 +1475,14 @@ function showNonABP(e){
   if(nonAbpData.length > 0) renderNonABPTable(nonAbpData);
 }
 
-function showDashboard(){
-  document.getElementById('page-nonabp').style.display = 'none';
+function showDashboard(e){
+  if(e) e.preventDefault();
+  const pages = ['page-nonabp','page-abp'];
+  pages.forEach(id=>{ const el=document.getElementById(id); if(el) el.style.display='none'; });
   document.getElementById('page-dashboard').style.display = 'block';
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const navDash = document.getElementById('nav-dashboard');
+  if(navDash) navDash.classList.add('active');
 }
 
 function renderNonABPTable(data){
