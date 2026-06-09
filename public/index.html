@@ -765,6 +765,36 @@ tbody tr:hover td{background:#F8F9FC}
       <div class="card-head">
         <div><div class="card-title">Non ABP partner detail</div><div class="card-sub">Client universe · VIDA existing · attainment progress</div></div>
       </div>
+      <!-- Non-ABP filter bar -->
+      <div class="filter-bar" id="nonabp-page-filter-bar">
+        <span class="filter-label">Filter:</span>
+        <div class="filter-group" id="npfg-subtype">
+          <button class="filter-btn" onclick="toggleDropdown('npdd-subtype',this)">Sub-type <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="filter-dropdown" id="npdd-subtype">
+            <label class="filter-option"><input type="checkbox" value="Platform" onchange="filterNonABPPage()"> Platform ISV</label>
+            <label class="filter-option"><input type="checkbox" value="SI" onchange="filterNonABPPage()"> System Integrator</label>
+            <label class="filter-option"><input type="checkbox" value="Reseller" onchange="filterNonABPPage()"> Reseller</label>
+            <label class="filter-option"><input type="checkbox" value="Developer" onchange="filterNonABPPage()"> Developer</label>
+            <label class="filter-option"><input type="checkbox" value="Referral" onchange="filterNonABPPage()"> Broker / Referral</label>
+          </div>
+        </div>
+        <div class="filter-group" id="npfg-industry">
+          <button class="filter-btn" onclick="toggleDropdown('npdd-industry',this)">Industry <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="filter-dropdown" id="npdd-industry" style="min-width:200px;max-height:240px;overflow-y:auto">
+            <label class="filter-option"><input type="checkbox" value="Banking" onchange="filterNonABPPage()"> Banking</label>
+            <label class="filter-option"><input type="checkbox" value="Financial Services" onchange="filterNonABPPage()"> Financial Services</label>
+            <label class="filter-option"><input type="checkbox" value="Multifinance" onchange="filterNonABPPage()"> Multifinance</label>
+            <label class="filter-option"><input type="checkbox" value="Healthcare" onchange="filterNonABPPage()"> Healthcare</label>
+            <label class="filter-option"><input type="checkbox" value="Government" onchange="filterNonABPPage()"> Government</label>
+            <label class="filter-option"><input type="checkbox" value="SME" onchange="filterNonABPPage()"> SME</label>
+            <label class="filter-option"><input type="checkbox" value="Telco" onchange="filterNonABPPage()"> Telco</label>
+            <label class="filter-option"><input type="checkbox" value="Rural Bank" onchange="filterNonABPPage()"> Rural Bank</label>
+            <label class="filter-option"><input type="checkbox" value="FMCG" onchange="filterNonABPPage()"> FMCG / Retail</label>
+          </div>
+        </div>
+        <button class="filter-clear-btn" onclick="resetNonABPPageFilters()">✕ Reset</button>
+        <span class="filter-result" id="nonabp-page-filter-result"></span>
+      </div>
       <div class="tbl-scroll">
         <table id="tbl-nonabp">
           <thead><tr>
@@ -904,6 +934,35 @@ tbody tr:hover td{background:#F8F9FC}
     <div class="card mb-14">
       <div class="card-head">
         <div><div class="card-title">ABP partner detail</div><div class="card-sub">Client universe · VIDA existing · target · attainment · use-case</div></div>
+      </div>
+      <!-- ABP filter bar -->
+      <div class="filter-bar" id="abp-page-filter-bar">
+        <span class="filter-label">Filter:</span>
+        <div class="filter-group" id="apfg-subtype">
+          <button class="filter-btn" onclick="toggleDropdown('apdd-subtype',this)">Sub-type <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="filter-dropdown" id="apdd-subtype">
+            <label class="filter-option"><input type="checkbox" value="Platform" onchange="filterABPPage()"> Platform ISV</label>
+            <label class="filter-option"><input type="checkbox" value="SI" onchange="filterABPPage()"> System Integrator</label>
+            <label class="filter-option"><input type="checkbox" value="Reseller" onchange="filterABPPage()"> Reseller</label>
+            <label class="filter-option"><input type="checkbox" value="Developer" onchange="filterABPPage()"> Developer</label>
+            <label class="filter-option"><input type="checkbox" value="Referral" onchange="filterABPPage()"> Broker / Referral</label>
+          </div>
+        </div>
+        <div class="filter-group" id="apfg-industry">
+          <button class="filter-btn" onclick="toggleDropdown('apdd-industry',this)">Industry <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="filter-dropdown" id="apdd-industry" style="min-width:200px;max-height:240px;overflow-y:auto">
+            <label class="filter-option"><input type="checkbox" value="Banking" onchange="filterABPPage()"> Banking</label>
+            <label class="filter-option"><input type="checkbox" value="Financial Services" onchange="filterABPPage()"> Financial Services</label>
+            <label class="filter-option"><input type="checkbox" value="Multifinance" onchange="filterABPPage()"> Multifinance</label>
+            <label class="filter-option"><input type="checkbox" value="Healthcare" onchange="filterABPPage()"> Healthcare</label>
+            <label class="filter-option"><input type="checkbox" value="Government" onchange="filterABPPage()"> Government</label>
+            <label class="filter-option"><input type="checkbox" value="SME" onchange="filterABPPage()"> SME</label>
+            <label class="filter-option"><input type="checkbox" value="Telco" onchange="filterABPPage()"> Telco</label>
+            <label class="filter-option"><input type="checkbox" value="Rural Bank" onchange="filterABPPage()"> Rural Bank</label>
+          </div>
+        </div>
+        <button class="filter-clear-btn" onclick="resetABPPageFilters()">✕ Reset</button>
+        <span class="filter-result" id="abp-page-filter-result"></span>
       </div>
       <div class="tbl-scroll">
         <table id="tbl-abp-page">
@@ -1512,6 +1571,54 @@ function renderNonABPTable(data){
       <td style="font-size:11px;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px" title="${p.useCase}">${p.useCase||'—'}</td>
     </tr>`;
   }).join('');
+}
+
+// ── ABP Page filter ───────────────────────────────────────────────────────────
+function filterABPPage(){
+  const subs=getChecked('apdd-subtype'), inds=getChecked('apdd-industry');
+  updBtn('apfg-subtype','apdd-subtype'); updBtn('apfg-industry','apdd-industry');
+  let vis=0;
+  document.querySelectorAll('#tbl-abp-page tbody tr').forEach(row=>{
+    const cells=row.querySelectorAll('td'); if(cells.length<3){row.style.display='';return;}
+    const st=cells[1]?.textContent?.trim()||'';
+    const ind=cells[2]?.textContent?.trim()||'';
+    const mS=!subs.length||subs.some(v=>st.includes(v));
+    const mI=!inds.length||inds.some(v=>ind.toLowerCase().includes(v.toLowerCase()));
+    const show=mS&&mI;
+    row.style.display=show?'':'none'; if(show)vis++;
+  });
+  const tot=document.querySelectorAll('#tbl-abp-page tbody tr').length;
+  const re=$('abp-page-filter-result');
+  if(re){const hf=subs.length||inds.length; re.textContent=hf?vis+' of '+tot+' shown':'';}
+}
+function resetABPPageFilters(){
+  document.querySelectorAll('#abp-page-filter-bar input').forEach(cb=>{cb.checked=false;});
+  document.querySelectorAll('#abp-page-filter-bar .filter-btn').forEach(btn=>{btn.classList.remove('active');const b=btn.querySelector('.f-count');if(b)b.remove();});
+  filterABPPage();
+}
+
+// ── Non-ABP Page filter ────────────────────────────────────────────────────────
+function filterNonABPPage(){
+  const subs=getChecked('npdd-subtype'), inds=getChecked('npdd-industry');
+  updBtn('npfg-subtype','npdd-subtype'); updBtn('npfg-industry','npdd-industry');
+  let vis=0;
+  document.querySelectorAll('#tbl-nonabp tbody tr').forEach(row=>{
+    const cells=row.querySelectorAll('td'); if(cells.length<3){row.style.display='';return;}
+    const st=cells[1]?.textContent?.trim()||'';
+    const ind=cells[2]?.textContent?.trim()||'';
+    const mS=!subs.length||subs.some(v=>st.includes(v));
+    const mI=!inds.length||inds.some(v=>ind.toLowerCase().includes(v.toLowerCase()));
+    const show=mS&&mI;
+    row.style.display=show?'':'none'; if(show)vis++;
+  });
+  const tot=document.querySelectorAll('#tbl-nonabp tbody tr').length;
+  const re=$('nonabp-page-filter-result');
+  if(re){const hf=subs.length||inds.length; re.textContent=hf?vis+' of '+tot+' shown':'';}
+}
+function resetNonABPPageFilters(){
+  document.querySelectorAll('#nonabp-page-filter-bar input').forEach(cb=>{cb.checked=false;});
+  document.querySelectorAll('#nonabp-page-filter-bar .filter-btn').forEach(btn=>{btn.classList.remove('active');const b=btn.querySelector('.f-count');if(b)b.remove();});
+  filterNonABPPage();
 }
 
 // ── Auth helpers ──────────────────────────────────────────────────────────────
