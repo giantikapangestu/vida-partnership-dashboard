@@ -715,10 +715,31 @@ function hubspotLink(p){
   return '<span style="color:var(--text-3);font-size:11px">—</span>';
 }
 
+function dedupeByName(data){
+  const map = new Map();
+  data.forEach(p => {
+    const key = cleanName(p.name).toLowerCase().trim();
+    if(!map.has(key)){
+      map.set(key, p);
+    } else {
+      const existing = map.get(key);
+      // Prefer record with parentId (HubSpot link)
+      if(p.parentId && p.parentId.trim() !== '' && (!existing.parentId || existing.parentId.trim() === '')){
+        map.set(key, p);
+      }
+    }
+  });
+  return Array.from(map.values());
+}
+
 function renderExisting(data){
   const tbody = document.querySelector('#tbl-existing tbody');
-  if(!data.length){ tbody.innerHTML=`<tr><td colspan="5"><div class="empty">No existing partners found</div></td></tr>`; return; }
-  tbody.innerHTML = data.map(p=>`<tr>
+  const deduped = dedupeByName(data);
+  if(!deduped.length){ tbody.innerHTML=`<tr><td colspan="5"><div class="empty">No existing partners found</div></td></tr>`; return; }
+  // Update tab count
+  const tcEl = document.getElementById('tc-existing');
+  if(tcEl) tcEl.textContent = deduped.length;
+  tbody.innerHTML = deduped.map(p=>`<tr>
     <td>
       <div class="t-name" title="${p.name}">${cleanName(p.name)}</div>
       ${p.owner ? `<div class="t-owner">${p.owner}</div>` : ''}
@@ -732,8 +753,11 @@ function renderExisting(data){
 
 function renderNew(data){
   const tbody = document.querySelector('#tbl-new tbody');
-  if(!data.length){ tbody.innerHTML=`<tr><td colspan="5"><div class="empty">No new partners found</div></td></tr>`; return; }
-  tbody.innerHTML = data.map(p=>`<tr>
+  const deduped = dedupeByName(data);
+  if(!deduped.length){ tbody.innerHTML=`<tr><td colspan="5"><div class="empty">No new partners found</div></td></tr>`; return; }
+  const tcEl = document.getElementById('tc-new');
+  if(tcEl) tcEl.textContent = deduped.length;
+  tbody.innerHTML = deduped.map(p=>`<tr>
     <td>
       <div class="t-name" title="${p.name}">${cleanName(p.name)}</div>
       ${p.owner ? `<div class="t-owner">${p.owner}</div>` : ''}
