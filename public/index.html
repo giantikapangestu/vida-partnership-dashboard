@@ -267,6 +267,7 @@ tbody tr:hover td{background:#F8F9FC}
 <!-- ── Main ─────────────────────────────────────────────────────────────── -->
 <main class="main">
 
+  <div id="page-dashboard">
   <!-- Top bar -->
   <div class="topbar">
     <div>
@@ -563,6 +564,172 @@ tbody tr:hover td{background:#F8F9FC}
     </div>
   </div>
 
+
+  </div>
+  <!-- ── Non ABP Support Page ─────────────────────────────────────────── -->
+  <div id="page-nonabp" style="display:none">
+
+    <div class="topbar">
+      <div>
+        <div class="page-title">Non ABP support</div>
+        <div class="page-sub">Partner support — Non Annual Business Plan · client universe &amp; strategy</div>
+      </div>
+    </div>
+
+    <div id="error-bar-nonabp" class="error-bar"></div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid mb-14">
+      <div class="kpi">
+        <div class="kpi-lbl">Non ABP partners</div>
+        <div class="kpi-val" id="kn-total">—</div>
+        <div class="kpi-sub">Active, non-ABP segment</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-lbl">Total client universe</div>
+        <div class="kpi-val" id="kn-universe" style="color:var(--amber)">—</div>
+        <div class="kpi-sub">Across all Non ABP partners</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-lbl">VIDA existing clients</div>
+        <div class="kpi-val" id="kn-existing" style="color:var(--text-3)">—</div>
+        <div class="kpi-sub">Converted from universe</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-lbl">Avg attainment</div>
+        <div class="kpi-val" id="kn-attainment" style="color:var(--text-3)">—</div>
+        <div class="kpi-sub">Existing / total clients</div>
+      </div>
+    </div>
+
+    <!-- Strategy Activity -->
+    <div class="section-label">Strategy activity</div>
+    <div class="card mb-14">
+      <div class="card-head"><div class="card-title">Non ABP activation strategy</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 16px">
+        <div style="background:var(--surface2);border-radius:var(--r);padding:14px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <div style="width:22px;height:22px;border-radius:50%;background:#EEEDFE;color:#3C3489;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">1</div>
+            <div style="font-size:12.5px;font-weight:600;color:var(--text-1)">Get leads from referral partner</div>
+          </div>
+          <div style="font-size:11px;color:var(--text-2);line-height:1.55">Focus pada industry dengan potensi tinggi untuk konversi melalui jaringan referral partner yang sudah ada.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px">
+            <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:#FAEEDA;color:#633806">Multifinance</span>
+            <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:#E1F5EE;color:#085041">SME</span>
+            <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:#E6F1FB;color:#0C447C">Healthcare</span>
+          </div>
+        </div>
+        <div style="background:var(--surface2);border-radius:var(--r);padding:14px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <div style="width:22px;height:22px;border-radius:50%;background:#E1F5EE;color:#085041;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">2</div>
+            <div style="font-size:12.5px;font-weight:600;color:var(--text-1)">Partnership marketing event</div>
+          </div>
+          <div style="font-size:11px;color:var(--text-2);line-height:1.55">Collaborative event bersama Reseller dan System Integrator partner untuk memperluas reach dan pipeline baru.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px">
+            <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:#EEEDFE;color:#3C3489">Reseller</span>
+            <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:#EEEDFE;color:#3C3489">System Integrator</span>
+            <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--surface2);color:var(--text-2)">Collab event</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Activity Plan Table -->
+    <div class="section-label">Activity plan</div>
+    <div class="card mb-14">
+      <div class="card-head">
+        <div>
+          <div class="card-title">Activity plan — Non ABP partners</div>
+          <div class="card-sub">Partner · activity · target industry · monthly schedule Jul–Dec 2026</div>
+        </div>
+      </div>
+      <div class="tbl-scroll">
+        <table style="table-layout:fixed">
+          <colgroup>
+            <col style="width:16%"><col style="width:24%"><col style="width:13%">
+            <col style="width:8%"><col style="width:8%"><col style="width:8%">
+            <col style="width:8%"><col style="width:8%"><col style="width:7%">
+          </colgroup>
+          <thead><tr>
+            <th>Partner</th><th>Activity</th><th>Target industry</th>
+            <th style="text-align:center">Jul</th><th style="text-align:center">Aug</th>
+            <th style="text-align:center">Sep</th><th style="text-align:center">Oct</th>
+            <th style="text-align:center">Nov</th><th style="text-align:center">Dec</th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td><div style="font-weight:600;font-size:12px">Accurate</div><div style="font-size:10px;color:var(--text-3)">Reseller</div></td>
+              <td style="font-size:11px;color:var(--text-2);line-height:1.5">Get leads referral — monthly recurring activation</td>
+              <td><span class="badge b-amber">SME</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+            </tr>
+            <tr>
+              <td><div style="font-weight:600;font-size:12px">MII</div><div style="font-size:10px;color:var(--text-3)">Reseller</div></td>
+              <td style="font-size:11px;color:var(--text-2);line-height:1.5">Get leads on MII workshop event</td>
+              <td><span class="badge b-amber">SME</span></td>
+              <td style="text-align:center;color:var(--text-3);font-size:12px">—</td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#E6F1FB;color:#185FA5;border:0.5px solid #B5D4F4">Planned</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#E6F1FB;color:#185FA5;border:0.5px solid #B5D4F4">Planned</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#E6F1FB;color:#185FA5;border:0.5px solid #B5D4F4">Planned</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#E6F1FB;color:#185FA5;border:0.5px solid #B5D4F4">Planned</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#E6F1FB;color:#185FA5;border:0.5px solid #B5D4F4">Planned</span></td>
+            </tr>
+            <tr>
+              <td><div style="font-weight:600;font-size:12px">Metranet</div><div style="font-size:10px;color:var(--text-3)">Reseller</div></td>
+              <td style="font-size:11px;color:var(--text-2);line-height:1.5">Co-selling deal with workshop — recurring activation</td>
+              <td><span class="badge b-teal">Government</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+              <td style="text-align:center"><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:10px 14px;border-top:0.5px solid var(--border);display:flex;gap:14px;align-items:center">
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-2)">
+          <span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#EAF3DE;border:0.5px solid #C0DD97"></span>Active (recurring)
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-2)">
+          <span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#E6F1FB;border:0.5px solid #B5D4F4"></span>Planned
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-2)">
+          <span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--surface2);border:0.5px solid var(--border)"></span>Not scheduled
+        </div>
+      </div>
+    </div>
+
+    <!-- Non ABP Partner Table -->
+    <div class="section-label">Partner list — Non ABP</div>
+    <div class="card mb-14">
+      <div class="card-head">
+        <div><div class="card-title">Non ABP partner detail</div><div class="card-sub">Client universe · VIDA existing · attainment progress</div></div>
+      </div>
+      <div class="tbl-scroll">
+        <table id="tbl-nonabp">
+          <thead><tr>
+            <th style="width:22%">Partner</th>
+            <th style="width:11%">Sub-type</th>
+            <th style="width:15%">Industry</th>
+            <th style="width:10%">Total clients</th>
+            <th style="width:10%">Existing</th>
+            <th style="width:10%">Target</th>
+            <th style="width:11%">Attainment</th>
+            <th style="width:11%">Use-case</th>
+          </tr></thead>
+          <tbody><tr><td colspan="8"><div class="loading"><div class="spinner"></div></div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
 </main>
 </div>
 
@@ -959,6 +1126,8 @@ function renderDashboard(d){
   // Tables
   renderExisting(d.existing || []);
   renderNew(d.newPartners || []);
+  nonAbpData = (d.abpList || []).filter(p=>p.abpStatus==='Non Support to ABP');
+  if(document.getElementById('page-nonabp').style.display !== 'none') renderNonABPTable(nonAbpData);
   renderABP(d.abpList || []);
 }
 
@@ -987,6 +1156,52 @@ function resetABPFilters(){
   document.querySelectorAll('#abp-filter-bar input').forEach(cb=>{cb.checked=false;});
   document.querySelectorAll('#abp-filter-bar .filter-btn').forEach(btn=>{btn.classList.remove('active');const b=btn.querySelector('.f-count');if(b)b.remove();});
   filterABP();
+}
+
+// ── Non ABP Page ─────────────────────────────────────────────────────────────
+let nonAbpData = [];
+
+function showNonABP(e){
+  if(e) e.preventDefault();
+  document.getElementById('page-dashboard').style.display = 'none';
+  document.getElementById('page-nonabp').style.display = 'block';
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('nav-nonabp').classList.add('active');
+  if(nonAbpData.length > 0) renderNonABPTable(nonAbpData);
+}
+
+function showDashboard(){
+  document.getElementById('page-nonabp').style.display = 'none';
+  document.getElementById('page-dashboard').style.display = 'block';
+}
+
+function renderNonABPTable(data){
+  const tbody = document.querySelector('#tbl-nonabp tbody');
+  if(!data.length){ tbody.innerHTML=`<tr><td colspan="8"><div class="empty">No Non ABP partners</div></td></tr>`; return; }
+
+  // KPIs
+  const totalUniverse = data.reduce((a,p)=>a+(p.totalClient||0),0);
+  const totalExisting = data.reduce((a,p)=>a+(p.existingClient||0),0);
+  const avgAtt = totalUniverse > 0 ? Math.round(totalExisting/totalUniverse*100) : 0;
+  const knt = $('kn-total'); if(knt) knt.textContent = data.length;
+  const knu = $('kn-universe'); if(knu) knu.textContent = totalUniverse > 1000 ? (totalUniverse/1000).toFixed(0)+'K+' : totalUniverse.toLocaleString();
+  const kne = $('kn-existing'); if(kne) kne.textContent = totalExisting.toLocaleString();
+  const kna = $('kn-attainment'); if(kna) kna.textContent = avgAtt+'%';
+
+  tbody.innerHTML = data.map(p=>{
+    const att = p.existingClient&&p.totalClient ? Math.min(100,Math.round(p.existingClient/p.totalClient*100)) : null;
+    const attHtml = att!=null ? `<div class="prog"><div class="prog-track"><div class="prog-inner" style="width:${att}%;background:#888780"></div></div><span class="prog-pct">${att}%</span></div>` : '<span style="color:var(--text-3)">—</span>';
+    return `<tr>
+      <td><div style="font-weight:600;font-size:12px" title="${p.name}">${cleanName(p.name)}</div>${p.owner?`<div style="font-size:10px;color:var(--text-3)">${p.owner}</div>`:''}</td>
+      <td>${subB(p.subType)}</td>
+      <td style="font-size:11px;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px" title="${p.industry}">${p.industry||'—'}</td>
+      <td style="text-align:right;font-weight:600">${fmt(p.totalClient)}</td>
+      <td style="text-align:right">${fmt(p.existingClient)}</td>
+      <td style="text-align:right">${fmt(p.targetClient)}</td>
+      <td>${attHtml}</td>
+      <td style="font-size:11px;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px" title="${p.useCase}">${p.useCase||'—'}</td>
+    </tr>`;
+  }).join('');
 }
 
 // ── Auth helpers ──────────────────────────────────────────────────────────────
