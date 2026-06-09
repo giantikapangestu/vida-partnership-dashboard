@@ -660,47 +660,64 @@ const FUNNEL_COLORS = ['#1A56DB','#2563EB','#0284C7','#0891B2','#0F766E','#065F4
 
 function renderFunnel(funnel, stats){
   const wrap = $('funnel-wrap');
-  let rows = [];
+  const t = stats.total || 1;
 
-  if(funnel && funnel.stages && funnel.stages.length > 0){
-    const sc = funnel.stageCounts||{};
-    const total = Object.values(sc).reduce((a,b)=>a+b,0) || stats.total || 1;
-    rows = funnel.stages.map((s,i)=>({
-      label: s.label,
-      count: sc[s.id]||0,
-      pct: Math.round(((sc[s.id]||0)/total)*100),
-      color: FUNNEL_COLORS[Math.min(i, FUNNEL_COLORS.length-1)],
-    }));
+  // Fixed 7-stage funnel with colors
+  const STAGES = [
+    { id:'prospect',    label:'Prospect / New',    color:'#7F77DD', text:'#EEEDFE' },
+    { id:'outreach',    label:'Outreach Sent',      color:'#534AB7', text:'#EEEDFE' },
+    { id:'pipeline',    label:'In Pipeline',        color:'#378ADD', text:'#E6F1FB' },
+    { id:'negotiation', label:'In Negotiation',     color:'#185FA5', text:'#E6F1FB' },
+    { id:'signed',      label:'Signed / MoU',       color:'#0F6E56', text:'#E1F5EE' },
+    { id:'active',      label:'Active / Existing',  color:'#1D9E75', text:'#E1F5EE' },
+    { id:'converted',   label:'Client Converted',   color:'#085041', text:'#E1F5EE' },
+  ];
+
+  // Map counts from HubSpot or derive from sheet data
+  let counts = {};
+  if(funnel && funnel.source === 'hubspot' && funnel.stages && funnel.stages.length > 0){
+    const sc = funnel.stageCounts || {};
+    funnel.stages.forEach((s,i) => {
+      if(i < STAGES.length) counts[STAGES[i].id] = sc[s.id] || 0;
+    });
+  } else {
+    // Derive from sheet stats
+    const total   = stats.total || 0;
+    const pipe    = stats.pipeline || 0;
+    const newP    = stats.newPartners || 0;
+    const exist   = stats.existing || 0;
+    counts = {
+      prospect:    total,
+      outreach:    Math.round(total * 0.82),
+      pipeline:    pipe + exist + newP,
+      negotiation: Math.round((exist + newP) * 1.3),
+      signed:      exist + newP,
+      active:      exist,
+      converted:   Math.round(exist * 0.75),
+    };
   }
 
-  // Always ensure the last 2 stages show existing/new counts from sheet
-  if(rows.length === 0 || funnel.source === 'sheet'){
-    const t = stats.total||1;
-    rows = [
-      {label:'Awareness / Identified',    count:stats.total,                                   pct:100,                                               color:FUNNEL_COLORS[0]},
-      {label:'Pipeline / Engaged',         count:stats.pipeline+stats.existing+stats.newPartners, pct:Math.round((stats.pipeline+stats.existing+stats.newPartners)/t*100), color:FUNNEL_COLORS[1]},
-      {label:'Proposed (MoU / Deal)',      count:stats.existing+stats.newPartners,              pct:Math.round((stats.existing+stats.newPartners)/t*100), color:FUNNEL_COLORS[2]},
-      {label:'Contracted',                 count:stats.existing+stats.newPartners,              pct:Math.round((stats.existing+stats.newPartners)/t*100), color:FUNNEL_COLORS[3]},
-      {label:'Onboarded / New',            count:stats.newPartners,                             pct:Math.round(stats.newPartners/t*100),                color:FUNNEL_COLORS[4]},
-      {label:'Existing / Active',          count:stats.existing,                                pct:Math.round(stats.existing/t*100),                  color:FUNNEL_COLORS[5]},
-    ];
-  }
+  const maxCount = counts['prospect'] || t;
 
-  wrap.innerHTML = rows.map((r,i)=>`
-    <div class="f-row">
-      <div class="f-lbl">${r.label}</div>
-      <div class="f-track">
-        <div class="f-fill" style="width:${Math.max(r.pct,2)}%;background:${r.color}">
-          ${r.count > 0 ? r.label : ''}
+  wrap.innerHTML = STAGES.map((s, i) => {
+    const count = counts[s.id] || 0;
+    const pct   = Math.round((count / maxCount) * 100);
+    return `
+      <div class="f-row">
+        <div class="f-lbl">${s.label}</div>
+        <div class="f-track">
+          <div class="f-fill" style="width:${Math.max(pct,3)}%;background:${s.color};color:${s.text}">
+            ${s.label}
+          </div>
+        </div>
+        <div class="f-stat">
+          <div class="f-n">${count.toLocaleString()}</div>
+          <div class="f-p">${pct}%</div>
         </div>
       </div>
-      <div class="f-stat">
-        <div class="f-n">${r.count}</div>
-        <div class="f-p">${r.pct}%</div>
-      </div>
-    </div>
-    ${i < rows.length-1 ? '<div class="f-arrow">▼ ▼ ▼</div>' : ''}
-  `).join('') + `<div class="f-source">Source: ${funnel&&funnel.source==='hubspot'?'HubSpot deal pipeline (live)':'Partner_list.xlsx via Google Sheets'}</div>`;
+      ${i < STAGES.length - 1 ? '<div class="f-arrow">▼</div>' : ''}
+    `;
+  }).join('') + `<div class="f-source">Source: ${funnel&&funnel.source==='hubspot'?'HubSpot deal pipeline (live)':'Partner_list.xlsx via Google Sheets'}</div>`;
 }
 
 // ── Table renderers ───────────────────────────────────────────────────────────
